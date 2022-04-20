@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaDeInicio</class>
+ <widget class="QMainWindow" name="VentanaDeInicio">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>333</width>
+    <height>419</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>333</width>
+    <height>419</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Login-In Touch</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>24</width>
+    <height>24</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>351</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>351</width>
+      <height>421</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.491633, y1:0.125, x2:0.499, y2:0.988636, stop:0.193634 rgba(13, 0, 0, 255), stop:1 rgba(255, 0, 15, 255));
+background-color: qlineargradient(spread:pad, x1:0.492, y1:0.0572727, x2:0.499, y2:0.988636, stop:0.471591 rgba(0, 0, 0, 255), stop:1 rgba(255, 0, 15, 255));
+
+border: 1px solid #000</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_usuario">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>160</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>71</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferDefault</stylestrategy>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0,0%);
+selection-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Usuario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_contrasenia">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>250</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>101</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferDefault</stylestrategy>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0,0%);
+border-color: rgba(0, 0, 0,0%);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_salir">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>340</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Salir</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_ingresar">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>340</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Ingresar</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineedit_usuario">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>190</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>161</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(220, 220, 220);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Obligatorio*</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineedit_contrasenia">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>280</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>161</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(220, 220, 220);</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Obligatorio*</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_InTouch">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>221</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>221</width>
+       <height>151</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0,0%);
+font: 75 28pt &quot;Script MT Bold&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt; font-weight:600; color:#ffffff;&quot;&gt;In Touch&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_Software">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>100</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0,0%);
+border: None;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Software&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pbutton_salir</sender>
+   <signal>clicked()</signal>
+   <receiver>VentanaDeInicio</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>167</x>
+     <y>425</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

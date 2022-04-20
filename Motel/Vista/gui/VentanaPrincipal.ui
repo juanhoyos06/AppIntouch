@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaPrincipal</class>
+ <widget class="QWidget" name="VentanaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>596</width>
+    <height>337</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menu Principal</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_salir">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>230</y>
+     <width>75</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 87 24pt &quot;Arial&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	font: 87 24pt &quot;Arial&quot;;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>0</y>
+     <width>497</width>
+     <height>115</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 28pt \&quot;Script MT Bold\&quot;;\n</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; font-weight:600;&quot;&gt;cooming soon&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_salir</sender>
+   <signal>clicked()</signal>
+   <receiver>VentanaPrincipal</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
