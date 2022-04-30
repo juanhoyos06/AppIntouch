@@ -3,6 +3,7 @@ import sys
 from Motel.Mundo.conexion import Conexion
 from Motel.Mundo.mundo import *
 from Motel.Vista.gui.ui_VentanaDeInicio import Ui_VentanaDeInicio
+from Motel.Vista.gui.imgs import *
 from Motel.Mundo.errores import UsuarioExistenteError,UsuarioNoExistenteError
 from PySide2.QtCore import QRegExp
 from PySide2.QtGui import QRegExpValidator, QIntValidator, QStandardItemModel, QStandardItem, QIcon
@@ -24,6 +25,8 @@ class VentanaLogin(QMainWindow):
 
     def _configurar(self):
         self.ui.pbutton_ingresar.clicked.connect(self.iniciar_sesion)
+
+
 
     def iniciar_sesion(self):
 
@@ -59,7 +62,14 @@ class VentanaPrincipal(QMainWindow):
        super().__init__()
        self.ventana = Ui_VentanaPrincipal()
        self.ventana.setupUi(self)
+       self._configurar()
 
+    def _configurar(self):
+        self.ventana.pbutton_configurar.clicked.connect(self.abrir_dialogo_configurar)
+
+
+    def abrir_dialogo_configurar(self):
+        pass
 
 
 

@@ -6,82 +6,183 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>337</height>
+    <width>624</width>
+    <height>359</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>624</width>
+    <height>359</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>624</width>
+    <height>359</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Menu Principal</string>
   </property>
-  <widget class="QPushButton" name="pushButton_salir">
+  <property name="styleSheet">
+   <string notr="true">background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));</string>
+  </property>
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>230</y>
-     <width>75</width>
-     <height>44</height>
+     <x>120</x>
+     <y>10</y>
+     <width>461</width>
+     <height>81</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>-1</number>
+   </property>
    <property name="styleSheet">
-    <string notr="true">
-
-QPushButton{
-	background-color: rgb(255, 255, 255);
-	
-	font: 87 24pt &quot;Arial&quot;;
-}
-
-QPushButton:hover{
-	
-	background-color: rgb(170, 170, 170);
-	font: 87 24pt &quot;Arial&quot;;
-
-}</string>
+    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
    </property>
-   <property name="text">
-    <string>Salir</string>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="pbutton_entradas">
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+
+background-color: rgb(255,255,255);</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imgs/entradas.png</normaloff>imgs/entradas.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbutton_configurar">
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+
+background-color: rgb(255,255,255);
+background-image: u&quot;imgs/configurar.png&quot;</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imgs/configurar.png</normaloff>imgs/configurar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbutton_reservas">
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>121</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+border: 20px;
+background-color: rgb(255, 255, 255);
+
+border-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imgs/reservas.png</normaloff>imgs/reservas.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>0</y>
-     <width>497</width>
-     <height>115</height>
+     <x>20</x>
+     <y>90</y>
+     <width>101</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 75 28pt \&quot;Script MT Bold\&quot;;\n</string>
+    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
    </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; font-weight:600;&quot;&gt;cooming soon&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_salir</sender>
-   <signal>clicked()</signal>
-   <receiver>VentanaPrincipal</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>353</x>
-     <y>261</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>414</x>
-     <y>486</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

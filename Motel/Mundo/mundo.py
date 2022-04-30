@@ -61,7 +61,8 @@ class Motel:
     def __init__(self):
         self.c = Conexion()
 
-    def CrearUsuario(self, usuario: Usuario):
+    def CrearUsuario(self, cedula, nombre, apellido, contrasenia):
+        usuario = Usuario(cedula, nombre, apellido, contrasenia)
 
         consultaInsert = f"insert into Usuarios(Documento_Identidad, Nombre, Apellido, Contraseña)" \
                    f"values({usuario.cedula}, {usuario.nombre},{usuario.apellido}, {usuario.contrasenia})"
@@ -73,14 +74,31 @@ class Motel:
             raise UsuarioExistenteError(usuario.cedula,f"Ya existe un usuario con la cedula{usuario.cedula}")
 
     def BuscarUsuario(self, cedula_usuario):
+        """
+        Se encarga de buscar si el usuario si esta registrado en la base de datos
+        :param cedula_usuario: Identificador del usuario
+        :return: El identificador del usuario en una lista si el usuario existe, si no, la lista estara vacia
+        """
         consulta = f"select Documento_Identidad from Usuarios where Documento_Identidad = '{cedula_usuario}'"
         return self.c.select_in_database(consulta)
 
     def BuscarContrasenia(self, cedula_usuario):
+        """
+        Se encarga de buscar la contraseña del usuario
+        :param cedula_usuario: Identificador del usuario
+        :return: La contraseña del usuario en una lista si el usuario existe, si no, la lista estara vacia
+        """
         consulta = f"select Contraseña from Usuarios where Documento_Identidad = '{cedula_usuario}'"
         return self.c.select_in_database(consulta)
 
     def IniciarSesion(self, CedulaUsuario, ContraseniaUsuario):
+        """
+        verifica que el usuario que quiere ingresar este en la base de datos, siendo asi le da acceso,
+        de lo contrario no le permite el ingreso a la aplicacion
+        :param CedulaUsuario: Identificador para el ingreso
+        :param ContraseniaUsuario: Conntraseña para ese identificador
+        :return:
+        """
         cedula = self.BuscarUsuario(CedulaUsuario)
         contrasenia= self.BuscarContrasenia(CedulaUsuario)
 

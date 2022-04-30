@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalhrCEki.ui'
+## Form generated from reading UI file 'VentanaPrincipalqpWxCP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,40 +17,79 @@ class Ui_VentanaPrincipal(object):
     def setupUi(self, VentanaPrincipal):
         if not VentanaPrincipal.objectName():
             VentanaPrincipal.setObjectName(u"VentanaPrincipal")
-        VentanaPrincipal.resize(596, 337)
-        self.pushButton_salir = QPushButton(VentanaPrincipal)
-        self.pushButton_salir.setObjectName(u"pushButton_salir")
-        self.pushButton_salir.setGeometry(QRect(270, 230, 75, 44))
-        self.pushButton_salir.setStyleSheet(u"\n"
+        VentanaPrincipal.resize(624, 359)
+        VentanaPrincipal.setMinimumSize(QSize(624, 359))
+        VentanaPrincipal.setMaximumSize(QSize(624, 359))
+        VentanaPrincipal.setStyleSheet(u"background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));")
+        self.frame = QFrame(VentanaPrincipal)
+        self.frame.setObjectName(u"frame")
+        self.frame.setGeometry(QRect(120, 10, 461, 81))
+        self.frame.setToolTipDuration(-1)
+        self.frame.setStyleSheet(u"background-color: rgba(0, 0, 0,0%);")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.pbutton_entradas = QPushButton(self.frame)
+        self.pbutton_entradas.setObjectName(u"pbutton_entradas")
+        self.pbutton_entradas.setMinimumSize(QSize(121, 61))
+        self.pbutton_entradas.setMaximumSize(QSize(121, 61))
+        self.pbutton_entradas.setStyleSheet(u"border-radius: 10px;\n"
 "\n"
-"QPushButton{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	\n"
-"	font: 87 24pt \"Arial\";\n"
-"}\n"
+"background-color: rgb(255,255,255);")
+        icon = QIcon()
+        icon.addFile(u"imgs/entradas.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pbutton_entradas.setIcon(icon)
+        self.pbutton_entradas.setIconSize(QSize(112, 86))
+
+        self.horizontalLayout.addWidget(self.pbutton_entradas)
+
+        self.pbutton_configurar = QPushButton(self.frame)
+        self.pbutton_configurar.setObjectName(u"pbutton_configurar")
+        self.pbutton_configurar.setMinimumSize(QSize(121, 61))
+        self.pbutton_configurar.setMaximumSize(QSize(121, 61))
+        self.pbutton_configurar.setStyleSheet(u"border-radius: 10px;\n"
 "\n"
-"QPushButton:hover{\n"
-"	\n"
-"	background-color: rgb(170, 170, 170);\n"
-"	font: 87 24pt \"Arial\";\n"
+"background-color: rgb(255,255,255);\n"
+"background-image: u\"imgs/configurar.png\"")
+        icon1 = QIcon()
+        icon1.addFile(u"imgs/configurar.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pbutton_configurar.setIcon(icon1)
+        self.pbutton_configurar.setIconSize(QSize(112, 86))
+
+        self.horizontalLayout.addWidget(self.pbutton_configurar)
+
+        self.pbutton_reservas = QPushButton(self.frame)
+        self.pbutton_reservas.setObjectName(u"pbutton_reservas")
+        self.pbutton_reservas.setMinimumSize(QSize(121, 61))
+        self.pbutton_reservas.setMaximumSize(QSize(121, 61))
+        self.pbutton_reservas.setStyleSheet(u"border-radius: 10px;\n"
+"border: 20px;\n"
+"background-color: rgb(255, 255, 255);\n"
 "\n"
-"}")
-        self.label = QLabel(VentanaPrincipal)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(50, 0, 497, 115))
-        self.label.setStyleSheet(u"font: 75 28pt \\\"Script MT Bold\\\";\\n")
-        self.label.setScaledContents(False)
-        self.label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+"border-color: rgb(0, 0, 0);")
+        icon2 = QIcon()
+        icon2.addFile(u"imgs/reservas.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pbutton_reservas.setIcon(icon2)
+        self.pbutton_reservas.setIconSize(QSize(112, 86))
+
+        self.horizontalLayout.addWidget(self.pbutton_reservas)
+
+        self.frame_2 = QFrame(VentanaPrincipal)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setGeometry(QRect(20, 90, 101, 231))
+        self.frame_2.setStyleSheet(u"background-color: rgba(0, 0, 0,0%);")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
 
         self.retranslateUi(VentanaPrincipal)
-        self.pushButton_salir.clicked.connect(VentanaPrincipal.close)
 
         QMetaObject.connectSlotsByName(VentanaPrincipal)
     # setupUi
 
     def retranslateUi(self, VentanaPrincipal):
         VentanaPrincipal.setWindowTitle(QCoreApplication.translate("VentanaPrincipal", u"Menu Principal", None))
-        self.pushButton_salir.setText(QCoreApplication.translate("VentanaPrincipal", u"Salir", None))
-        self.label.setText(QCoreApplication.translate("VentanaPrincipal", u"<html><head/><body><p><span style=\" font-size:72pt; font-weight:600;\">cooming soon</span></p></body></html>", None))
     # retranslateUi
 
