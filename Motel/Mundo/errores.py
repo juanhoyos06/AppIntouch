@@ -1,6 +1,7 @@
 import pyodbc
 class MotelError(Exception):
     pass
+
 class DatabaseError(pyodbc.ProgrammingError):
 
     def __init__(self, cedula: str, msg: str):
@@ -32,6 +33,12 @@ class UsuarioExistenteError(MotelError):
     def __init__(self, cedula: str, msg: str):
 
         self.cedula = cedula
+        self.msg = msg
+
+class HabitacionExistenteError(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
         self.msg = msg
 
 

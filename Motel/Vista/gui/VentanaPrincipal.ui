@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>624</width>
-    <height>359</height>
+    <height>379</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -31,14 +31,155 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>10</y>
-     <width>461</width>
-     <height>81</height>
+     <x>185</x>
+     <y>-1</y>
+     <width>441</width>
+     <height>361</height>
     </rect>
    </property>
    <property name="toolTipDuration">
     <number>-1</number>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background-color: None;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QStackedWidget" name="pages">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>441</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0%);</string>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_bienvenida">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>411</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>411</width>
+        <height>311</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>411</width>
+        <height>311</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 75 20pt &quot;Script MT Bold&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_entradas">
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>130</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Entradas</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_configuracion">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>130</y>
+        <width>281</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Configuracion</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_reservas">
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>100</y>
+        <width>241</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Reservas</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_botonoes">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>170</width>
+     <height>359</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>170</width>
+     <height>359</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>110</width>
+     <height>359</height>
+    </size>
+   </property>
+   <property name="toolTipDuration">
+    <number>-1</number>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
@@ -49,7 +190,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -80,13 +221,26 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 10px;
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 10px;
+}
 
-background-color: rgb(255,255,255);</string>
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+
+}</string>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>imgs/entradas.png</normaloff>imgs/entradas.png</iconset>
+      <property name="text">
+       <string>Entradas</string>
       </property>
       <property name="iconSize">
        <size>
@@ -97,7 +251,7 @@ background-color: rgb(255,255,255);</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pbutton_configurar">
+     <widget class="QPushButton" name="pbutton_configuracion">
       <property name="minimumSize">
        <size>
         <width>121</width>
@@ -111,14 +265,26 @@ background-color: rgb(255,255,255);</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 10px;
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 10px;
+}
 
-background-color: rgb(255,255,255);
-background-image: u&quot;imgs/configurar.png&quot;</string>
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+
+}</string>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>imgs/configurar.png</normaloff>imgs/configurar.png</iconset>
+      <property name="text">
+       <string>Configuracion</string>
       </property>
       <property name="iconSize">
        <size>
@@ -143,15 +309,26 @@ background-image: u&quot;imgs/configurar.png&quot;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 10px;
-border: 20px;
-background-color: rgb(255, 255, 255);
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 10px;
+}
 
-border-color: rgb(0, 0, 0);</string>
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+
+}</string>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>imgs/reservas.png</normaloff>imgs/reservas.png</iconset>
+      <property name="text">
+       <string>Reservas</string>
       </property>
       <property name="iconSize">
        <size>
@@ -162,25 +339,6 @@ border-color: rgb(0, 0, 0);</string>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QFrame" name="frame_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>101</width>
-     <height>231</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
   </widget>
  </widget>
  <resources/>

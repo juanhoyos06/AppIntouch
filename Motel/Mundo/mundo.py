@@ -1,6 +1,6 @@
 from Motel.Mundo.conexion import Conexion
 from Motel.Mundo.errores import UsuarioExistenteError, UsuarioNoExistenteError, ContraseniaIncorrecta, \
-    Usuario_o_ContraseniaIncorrecto
+    Usuario_o_ContraseniaIncorrecto, HabitacionExistenteError
 
 
 class Habitacion:
@@ -21,17 +21,6 @@ class Usuario:
         self.apellido: str = apellido
         self.contrasenia: str = contrasenia
 
-    def CrearDatabaseHabitaciones(self):
-        """
-        Crea la tabla de las habitaciones al usuario
-
-        """
-        CursorCrear = Conexion.conexion.cursor()
-        consulta= f"create table Habitaciones{self.cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(25) NOT NULL, Capacidad INT NOT NULL, Estado TEXT NOT NULL)"
-        CursorCrear.execute(consulta)
-
-        CursorCrear.commit()
-        CursorCrear.close()
 
     def BuscarhabitacionDisponible(self, habitacion: Habitacion):
         consulta = f"select * from Habitaciones{self.cedula} where Estado = {habitacion.Estado}"
@@ -62,16 +51,16 @@ class Motel:
         self.c = Conexion()
 
     def CrearUsuario(self, cedula, nombre, apellido, contrasenia):
-        usuario = Usuario(cedula, nombre, apellido, contrasenia)
+
 
         consultaInsert = f"insert into Usuarios(Documento_Identidad, Nombre, Apellido, Contraseña)" \
-                   f"values({usuario.cedula}, {usuario.nombre},{usuario.apellido}, {usuario.contrasenia})"
-        consultaSelect= f"select Documento_Identidad from Usuarios where Documento_Identidad = {usuario.cedula}"
+                   f"values('{cedula}', '{nombre}','{apellido}', '{contrasenia}')"
+        consultaSelect= f"select Documento_Identidad from Usuarios where Documento_Identidad = '{cedula}'"
 
         if self.c.select_in_database(consultaSelect) == []:
             self.c.insert_in_database(consultaInsert)
         else:
-            raise UsuarioExistenteError(usuario.cedula,f"Ya existe un usuario con la cedula{usuario.cedula}")
+            raise UsuarioExistenteError(cedula,f"Ya existe un usuario con la cedula{cedula}")
 
     def BuscarUsuario(self, cedula_usuario):
         """
@@ -108,7 +97,31 @@ class Motel:
         else:
             raise Usuario_o_ContraseniaIncorrecto(CedulaUsuario, f"Usuario o contraseña incorrecto, porfavor intente nuevamente")
 
+    def CrearDatabaseHabitaciones(self, cedula):
+        """
+        Crea la tabla de las habitaciones al usuario
+        :arg : cedula del usuario que va a crear las habitaciones
 
-#
+        """
+        CursorCrear = Conexion.conexion.cursor()
+        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(25) NOT NULL, Capacidad INT NOT NULL, Estado TEXT NOT NULL)"
+        CursorCrear.execute(consulta)
+
+        CursorCrear.commit()
+        CursorCrear.close()
+
+    def buscarTabla(self, cedula):
+        consulta = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitacioes{cedula}'"
+        self.c.select_in_database(consulta)
+
+    def Agregarhabitacion(self, cedula, numero, tipo, capacidad, tipoEntrada, estado):
+        consultaInsert = f"Insert into Habitaciones{cedula} values('{numero}','{tipo}', '{capacidad}', '{tipoEntrada}', '{estado}')"
+        consultaSelect = f"select Numero from Habitaciones{cedula} where Numero = {numero}"
+
+        if self.c.select_in_database(consultaSelect) == []:
+            self.c.insert_in_database(consultaInsert)
+        else:
+            raise HabitacionExistenteError(numero, f"ya existe una habitacion con el numero: {numero}")
+
 
 

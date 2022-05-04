@@ -16,10 +16,9 @@ class Conexion:
     def select_in_database(self, consulta):
         habitaciones = list()
         cursorSelect = self.conexion.cursor()
-        try:
-            cursorSelect.execute(consulta)
-        except UsuarioNoExistenteError as e:
-            print(e.msg)
+
+        cursorSelect.execute(consulta)
+
 
         Habitacion = cursorSelect.fetchone()
 
