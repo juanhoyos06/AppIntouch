@@ -22,9 +22,7 @@ class Usuario:
         self.contrasenia: str = contrasenia
 
 
-    def BuscarhabitacionDisponible(self, habitacion: Habitacion):
-        consulta = f"select * from Habitaciones{self.cedula} where Estado = {habitacion.Estado}"
-        self.c.select_in_database(consulta)
+
     def BuscarHabitacionTipo(self, habitacion: Habitacion):
         pass
     def AgregarNuevaHabitacion(self, habitacion: Habitacion):
@@ -104,7 +102,7 @@ class Motel:
 
         """
         CursorCrear = Conexion.conexion.cursor()
-        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(15) NOT NULL, Capacidad INT NOT NULL, TipoEntrada VARCHAR(15) NOT NULL, Estado TEXT NOT NULL)"
+        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(15) NOT NULL, Capacidad INT NOT NULL, TipoEntrada VARCHAR(15) NOT NULL, Estado VARCHAR(15) NOT NULL)"
         CursorCrear.execute(consulta)
 
         CursorCrear.commit()
@@ -160,3 +158,7 @@ class Motel:
     def ActualizarEstadoHabitacion(self, cedula, numeroHabitacion, EstadoHabitacionNuevo):
         consulta = f"update Habitaciones{cedula} set Estado = '{EstadoHabitacionNuevo}' where Numero = {numeroHabitacion}"
         self.c.update_in_database(consulta)
+
+    def BuscarhabitacionDisponible(self, cedula):
+        consulta = f"select * from Habitaciones{cedula} where Estado = 'Disponible'"
+        return self.c.select_in_database(consulta)

@@ -87,6 +87,7 @@ class VentanaPrincipal(QMainWindow):
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_dialogo_crearHabitaciones)
         self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
+        self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
 
 
     def abrir_dialogo_crearUsuario(self):
@@ -189,6 +190,10 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setText("Debe ingresar el numero de la habitacion que desea modificar")
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
+
+    def registrar_entrada(self):
+        habitacionesDisponibles = self.motel.BuscarhabitacionDisponible(self.cedula)
+        self.ventana.listView_habitacionesDisponibles.setModel(habitacionesDisponibles)
 
 
 

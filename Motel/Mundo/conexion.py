@@ -1,6 +1,6 @@
 import pyodbc
 
-from Motel.Mundo.errores import UsuarioNoExistenteError
+
 
 
 class Conexion:

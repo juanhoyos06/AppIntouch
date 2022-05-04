@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalAwiJwh.ui'
+## Form generated from reading UI file 'VentanaPrincipalubNyyJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -46,10 +46,9 @@ class Ui_VentanaPrincipal(object):
         self.pages.addWidget(self.page)
         self.page_entradas = QWidget()
         self.page_entradas.setObjectName(u"page_entradas")
-        self.pushButton = QPushButton(self.page_entradas)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(160, 130, 141, 101))
-        self.pushButton.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.listView_habitacionesDisponibles = QListView(self.page_entradas)
+        self.listView_habitacionesDisponibles.setObjectName(u"listView_habitacionesDisponibles")
+        self.listView_habitacionesDisponibles.setGeometry(QRect(10, 70, 256, 241))
         self.pages.addWidget(self.page_entradas)
         self.page_configuracion = QWidget()
         self.page_configuracion.setObjectName(u"page_configuracion")
@@ -247,7 +246,6 @@ class Ui_VentanaPrincipal(object):
     def retranslateUi(self, VentanaPrincipal):
         VentanaPrincipal.setWindowTitle(QCoreApplication.translate("VentanaPrincipal", u"Menu Principal", None))
         self.label_bienvenida.setText("")
-        self.pushButton.setText(QCoreApplication.translate("VentanaPrincipal", u"Entradas", None))
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
         self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Agregar Habitaciones ", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))
