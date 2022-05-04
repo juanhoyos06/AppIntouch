@@ -3,10 +3,11 @@ import sys
 from Motel.Mundo import conexion
 from Motel.Mundo.mundo import *
 from Motel.Vista.gui.ui_DialogoCrearHabitaciones import Ui_DialogoCrearHabitaciones
+from Motel.Vista.gui.ui_DialogoModificarHabitaciones import Ui_DialogoModificarHabitaciones
 from Motel.Vista.gui.ui_VentanaDeInicio import Ui_VentanaDeInicio
 from Motel.Vista.gui.ui_DialogoCrearUsuario import Ui_DialogoCrearUsuario
 from Motel.Vista.gui.imgs import *
-from Motel.Mundo.errores import UsuarioExistenteError,UsuarioNoExistenteError
+from Motel.Mundo.errores import UsuarioExistenteError, UsuarioNoExistenteError, HabitacionNoExistenteError
 from PySide2.QtCore import QRegExp
 from PySide2.QtGui import QRegExpValidator, QIntValidator, QStandardItemModel, QStandardItem, QIcon
 from PySide2.QtWidgets import QMainWindow, QApplication, QDialog, QMessageBox, QInputDialog
@@ -85,6 +86,7 @@ class VentanaPrincipal(QMainWindow):
            self.ventana.pbutton_crearUsuario.setEnabled(True)
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_dialogo_crearHabitaciones)
+        self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
 
 
     def abrir_dialogo_crearUsuario(self):
@@ -116,8 +118,11 @@ class VentanaPrincipal(QMainWindow):
 
 
     def abrir_dialogo_crearHabitaciones(self):
-        if self.motel.buscarTabla(self.cedula) == []:
+        tabla = self.motel.buscarTabla(self.cedula)
+
+        if tabla == []:
             self.motel.CrearDatabaseHabitaciones(self.cedula)
+
 
         dialogo = DialogoCrearHabitaciones(self)
         resp = dialogo.exec()
@@ -148,7 +153,42 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
+    def abrir_dialogo_modificarHabitaciones(self):
+        dialogo = DialogoModificarHabitaciones(self)
+        resp = dialogo.exec()
 
+        if resp == QDialog.Accepted:
+            capturaNumero = dialogo.ui.lineedit_numeroHabitacion.text()
+            capturaTipo = dialogo.ui.lineedit_tipoHabitacion.text()
+            capturaCapacidad = dialogo.ui.lineedit_capacidadHabitacion.text()
+            capturaTipoEntrada = dialogo.ui.lineedit_tipoEntrada.text()
+            capturaEstado = dialogo.ui.lineedit_estadoHabitacion.text()
+
+            if capturaNumero != "":
+
+
+                if capturaTipo != "":
+
+                    self.motel.ActualizarTipoHabitacion(self.cedula,capturaNumero, capturaTipo)
+
+                if capturaCapacidad != "":
+
+                    self.motel.ActualizarCapacidadHabitacion(self.cedula, capturaNumero, capturaCapacidad)
+
+                if capturaTipoEntrada != "":
+
+                    self.motel.ActualizarTipoEntradaHabitacion(self.cedula, capturaNumero, capturaTipoEntrada)
+
+                if capturaEstado != "":
+
+                    self.motel.ActualizarEstadoHabitacion(self.cedula,capturaNumero, capturaEstado)
+            else:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Error de validación")
+                msg_box.setIcon(QMessageBox.Critical)
+                msg_box.setText("Debe ingresar el numero de la habitacion que desea modificar")
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
 
 
 
@@ -175,7 +215,6 @@ class DialogoCrearUsuario(QDialog):
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec_()
 
-
 class DialogoCrearHabitaciones(QDialog):
     def __init__(self, parent = None):
         QDialog.__init__(self,parent)
@@ -195,5 +234,25 @@ class DialogoCrearHabitaciones(QDialog):
             msg_box.setWindowTitle("Error de validación")
             msg_box.setIcon(QMessageBox.Critical)
             msg_box.setText("Todos los campos obligatorios debe ingresarlos.")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
+
+class DialogoModificarHabitaciones(QDialog):
+    def __init__(self, parent = None):
+        QDialog.__init__(self,parent)
+        self.ui = Ui_DialogoModificarHabitaciones()
+        self.ui.setupUi(self)
+
+    def accept(self) -> None:
+        capturaNumHabitacion = self.ui.lineedit_numeroHabitacion.text()
+
+        if capturaNumHabitacion != "":
+            super().accept()
+        else:
+
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Error de validación")
+            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setText("Primero debe ingresar el numero de la habitacion ")
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec_()

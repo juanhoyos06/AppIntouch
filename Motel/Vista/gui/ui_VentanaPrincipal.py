@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalhtkVzr.ui'
+## Form generated from reading UI file 'VentanaPrincipalAwiJwh.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -56,16 +56,17 @@ class Ui_VentanaPrincipal(object):
         self.pbutton_crearUsuario = QPushButton(self.page_configuracion)
         self.pbutton_crearUsuario.setObjectName(u"pbutton_crearUsuario")
         self.pbutton_crearUsuario.setEnabled(False)
-        self.pbutton_crearUsuario.setGeometry(QRect(20, 40, 121, 61))
-        self.pbutton_crearUsuario.setMinimumSize(QSize(121, 61))
-        self.pbutton_crearUsuario.setMaximumSize(QSize(121, 61))
+        self.pbutton_crearUsuario.setGeometry(QRect(20, 40, 127, 61))
+        self.pbutton_crearUsuario.setMinimumSize(QSize(127, 61))
+        self.pbutton_crearUsuario.setMaximumSize(QSize(127, 61))
         self.pbutton_crearUsuario.setStyleSheet(u"\n"
 "QPushButton{\n"
 "	border-radius: 10px;\n"
 "	background-color: rgb(255,255,255);\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"	border: 10px;\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -74,7 +75,8 @@ class Ui_VentanaPrincipal(object):
 "	\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}")
         self.pbutton_crearUsuario.setIconSize(QSize(112, 86))
         self.pbutton_configurarHabitaciones = QPushButton(self.page_configuracion)
@@ -88,7 +90,8 @@ class Ui_VentanaPrincipal(object):
 "	background-color: rgb(255,255,255);\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"	border: 10px;\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -97,7 +100,8 @@ class Ui_VentanaPrincipal(object):
 "	\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}")
         self.pbutton_configurarHabitaciones.setIconSize(QSize(112, 86))
         self.pbutton_modificarHabitaciones = QPushButton(self.page_configuracion)
@@ -111,7 +115,8 @@ class Ui_VentanaPrincipal(object):
 "	background-color: rgb(255,255,255);\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"	border: 10px;\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -120,7 +125,8 @@ class Ui_VentanaPrincipal(object):
 "	\n"
 "	font: 75 14pt \"Script MT Bold\";\n"
 "	color: rgb(0,0, 0);\n"
-"\n"
+"	border: 5px solid;\n"
+"	border- color: rgb(0, 0, 0);\n"
 "}")
         self.pbutton_modificarHabitaciones.setIconSize(QSize(112, 86))
         self.pages.addWidget(self.page_configuracion)
@@ -139,7 +145,10 @@ class Ui_VentanaPrincipal(object):
         self.frame_botonoes.setToolTipDuration(-1)
         self.frame_botonoes.setLayoutDirection(Qt.LeftToRight)
         self.frame_botonoes.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"")
+"\n"
+"border-right: 5px solid;\n"
+"border-top: 5px solid;\n"
+"border-bottom: 5px solid;")
         self.frame_botonoes.setFrameShape(QFrame.StyledPanel)
         self.frame_botonoes.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame_botonoes)
@@ -240,7 +249,7 @@ class Ui_VentanaPrincipal(object):
         self.label_bienvenida.setText("")
         self.pushButton.setText(QCoreApplication.translate("VentanaPrincipal", u"Entradas", None))
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
-        self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Configuarar Habitaciones ", None))
+        self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Agregar Habitaciones ", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))
         self.pushButton_3.setText(QCoreApplication.translate("VentanaPrincipal", u"Reservas", None))
         self.pbutton_entradas.setText(QCoreApplication.translate("VentanaPrincipal", u"Entradas", None))

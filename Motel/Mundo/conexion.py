@@ -14,7 +14,7 @@ class Conexion:
 
 ##Consulta a la base de datos
     def select_in_database(self, consulta):
-        habitaciones = list()
+        habitaciones = []
         cursorSelect = self.conexion.cursor()
 
         cursorSelect.execute(consulta)
@@ -28,6 +28,7 @@ class Conexion:
             Habitacion = cursorSelect.fetchone()
 
         cursorSelect.close()
+
         return habitaciones
 ##Insertar datos
     def insert_in_database(self,consulta):
@@ -42,11 +43,11 @@ class Conexion:
         cursorInsert.close()
 
 ##Actualizar datos
-    def update_in_database(self):
+    def update_in_database(self, consulta):
         cursorUpdate = self.conexion.cursor()
-        consultaUpdate = "update Habitaciones set Tipo_habitacion = 'Especial' where Numero_Habitacion = 005"
 
-        cursorUpdate.execute(consultaUpdate)
+
+        cursorUpdate.execute(consulta)
 
         cursorUpdate.commit()
         cursorUpdate.close()
@@ -67,7 +68,7 @@ class Conexion:
 
 #c = Conexion()
 #
-#consulta1 = f"select * from Usuarios "
+#consulta1 = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitaciones1000410302'"
 #consulta2 = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
 #consulta = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
 #Cedula = c.select_in_database(consulta2)
@@ -78,3 +79,4 @@ class Conexion:
 #    print("hello")
 #else:
 #    print("hi")
+#c.select_in_database(consulta1)

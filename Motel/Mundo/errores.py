@@ -41,6 +41,11 @@ class HabitacionExistenteError(MotelError):
         self.numero = numero
         self.msg = msg
 
+class HabitacionNoExistenteError(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
+        self.msg = msg
 
 
 class Usuario_o_ContraseniaIncorrecto(MotelError):

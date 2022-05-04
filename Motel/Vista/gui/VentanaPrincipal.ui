@@ -70,28 +70,28 @@ background-color: None;</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>20</y>
+        <y>10</y>
         <width>411</width>
-        <height>311</height>
+        <height>321</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
         <width>411</width>
-        <height>311</height>
+        <height>321</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>411</width>
-        <height>311</height>
+        <height>321</height>
        </size>
       </property>
       <property name="focusPolicy">
        <enum>Qt::TabFocus</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 75 20pt &quot;Script MT Bold&quot;;</string>
+       <string notr="true">font: 75 18pt &quot;Script MT Bold&quot;;</string>
       </property>
       <property name="text">
        <string/>
@@ -117,20 +117,163 @@ background-color: None;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_configuracion">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pbutton_crearUsuario">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>130</y>
-        <width>281</width>
-        <height>91</height>
+        <x>20</x>
+        <y>40</y>
+        <width>127</width>
+        <height>61</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>127</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>127</width>
+        <height>61</height>
+       </size>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}
+
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}</string>
       </property>
       <property name="text">
-       <string>Configuracion</string>
+       <string>Crear Usuario</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbutton_configurarHabitaciones">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>40</y>
+        <width>205</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>205</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>205</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}
+
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Agregar Habitaciones </string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbutton_modificarHabitaciones">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>205</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>205</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>205</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton{
+	border-radius: 10px;
+	background-color: rgb(255,255,255);
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}
+
+QPushButton:hover{
+	border-radius: 10px;
+	background-color: rgb(170, 170, 170);
+	
+	font: 75 14pt &quot;Script MT Bold&quot;;
+	color: rgb(0,0, 0);
+	border: 5px solid;
+	border- color: rgb(0, 0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Modificar Habitaciones </string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>112</width>
+        <height>86</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -157,8 +300,8 @@ background-color: None;</string>
   <widget class="QFrame" name="frame_botonoes">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>9</y>
+     <x>0</x>
+     <y>0</y>
      <width>170</width>
      <height>359</height>
     </rect>
@@ -182,7 +325,11 @@ background-color: None;</string>
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
+    <string notr="true">background-color: rgb(255, 255, 255);
+
+border-right: 5px solid;
+border-top: 5px solid;
+border-bottom: 5px solid;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -195,7 +342,7 @@ background-color: None;</string>
      <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>0</number>
+     <number>20</number>
     </property>
     <property name="topMargin">
      <number>0</number>
@@ -227,7 +374,8 @@ QPushButton{
 	background-color: rgb(255,255,255);
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
-	border: 10px;
+	border: 5px solid;
+	border-color: rgb(255, 3, 3)
 }
 
 QPushButton:hover{
@@ -236,6 +384,8 @@ QPushButton:hover{
 	
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
+	border: 5px solid;
+	border-color: rgb(255, 3, 3)
 
 }</string>
       </property>
@@ -271,7 +421,8 @@ QPushButton{
 	background-color: rgb(255,255,255);
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
-	border: 10px;
+	border: 5px solid;
+	border-color: rgb(255, 3, 3);
 }
 
 QPushButton:hover{
@@ -280,7 +431,8 @@ QPushButton:hover{
 	
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
-
+	border: 5px solid;
+	border-color: rgb(255, 3, 3)
 }</string>
       </property>
       <property name="text">
@@ -315,7 +467,8 @@ QPushButton{
 	background-color: rgb(255,255,255);
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
-	border: 10px;
+	border: 5px solid;
+	border-color: rgb(255, 3, 3);
 }
 
 QPushButton:hover{
@@ -324,6 +477,8 @@ QPushButton:hover{
 	
 	font: 75 14pt &quot;Script MT Bold&quot;;
 	color: rgb(0,0, 0);
+	border: 5px solid;
+	border-color: rgb(255, 3, 3)
 
 }</string>
       </property>

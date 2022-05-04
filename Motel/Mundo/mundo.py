@@ -104,15 +104,15 @@ class Motel:
 
         """
         CursorCrear = Conexion.conexion.cursor()
-        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(25) NOT NULL, Capacidad INT NOT NULL, Estado TEXT NOT NULL)"
+        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(15) NOT NULL, Capacidad INT NOT NULL, TipoEntrada VARCHAR(15) NOT NULL, Estado TEXT NOT NULL)"
         CursorCrear.execute(consulta)
 
         CursorCrear.commit()
         CursorCrear.close()
 
     def buscarTabla(self, cedula):
-        consulta = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitacioes{cedula}'"
-        self.c.select_in_database(consulta)
+        consulta = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitaciones{cedula}'"
+        return self.c.select_in_database(consulta)
 
     def Agregarhabitacion(self, cedula, numero, tipo, capacidad, tipoEntrada, estado):
         consultaInsert = f"Insert into Habitaciones{cedula} values('{numero}','{tipo}', '{capacidad}', '{tipoEntrada}', '{estado}')"
@@ -123,5 +123,40 @@ class Motel:
         else:
             raise HabitacionExistenteError(numero, f"ya existe una habitacion con el numero: {numero}")
 
+    def selectTipo(self, cedula, numeroHabitacion):
+        consulta= f"select Tipo from Habitaciones{cedula} where Numero = {numeroHabitacion}"
+        Tipo = self.c.select_in_database(consulta)
+        return Tipo[0][0]
 
+    def selectCapacidad(self, cedula, numeroHabitacion):
+        consulta = f"select Capacidad from Habitaciones{cedula} where Numero = {numeroHabitacion}"
+        self.c.select_in_database(consulta)
 
+    def selectTipoEntrada(self, cedula, numeroHabitacion):
+        consulta = f"select TipoEntrada from Habitaciones{cedula} where Numero = {numeroHabitacion}"
+        self.c.select_in_database(consulta)
+
+    def selectEstado(self, cedula, numeroHabitacion):
+        consulta = f"select Estado from Habitaciones{cedula} where Numero = {numeroHabitacion}"
+        self.c.select_in_database(consulta)
+
+    def ActualizarNumeroHabitacion(self, cedula,numeroHabitacion, numeroHabitacionNuevo):
+        consulta = f"update Habitaciones{cedula} set Numero = {numeroHabitacionNuevo} where Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def ActualizarTipoHabitacion(self, cedula, numeroHabitacion, tipoHabitacionNuevo):
+
+        consulta = f"update Habitaciones{cedula} set Tipo = '{tipoHabitacionNuevo}' where Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def ActualizarCapacidadHabitacion(self, cedula, numeroHabitacion, capacidadHabitacionNuevo):
+        consulta = f"update Habitaciones{cedula} set Capacidad = '{capacidadHabitacionNuevo}' where Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def ActualizarTipoEntradaHabitacion(self, cedula, numeroHabitacion, tipoEntradaHabitacionNuevo):
+        consulta = f"update Habitaciones{cedula} set TipoEntrada = '{tipoEntradaHabitacionNuevo}' where Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def ActualizarEstadoHabitacion(self, cedula, numeroHabitacion, EstadoHabitacionNuevo):
+        consulta = f"update Habitaciones{cedula} set Estado = '{EstadoHabitacionNuevo}' where Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
