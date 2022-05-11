@@ -51,9 +51,8 @@ class Motel:
     def CrearUsuario(self, cedula, nombre, apellido, contrasenia):
 
 
-        consultaInsert = f"insert into Usuarios(Documento_Identidad, Nombre, Apellido, Contraseña)" \
-                   f"values('{cedula}', '{nombre}','{apellido}', '{contrasenia}')"
-        consultaSelect= f"select Documento_Identidad from Usuarios where Documento_Identidad = '{cedula}'"
+        consultaInsert = f"insert into Usuarios values('{cedula}', '{nombre}','{apellido}', '{contrasenia}')"
+        consultaSelect= f"select Cedula from Usuarios where Cedula = '{cedula}'"
 
         if self.c.select_in_database(consultaSelect) == []:
             self.c.insert_in_database(consultaInsert)
@@ -66,7 +65,7 @@ class Motel:
         :param cedula_usuario: Identificador del usuario
         :return: El identificador del usuario en una lista si el usuario existe, si no, la lista estara vacia
         """
-        consulta = f"select Documento_Identidad from Usuarios where Documento_Identidad = '{cedula_usuario}'"
+        consulta = f"select Cedula from Usuarios where Cedula = '{cedula_usuario}'"
         return self.c.select_in_database(consulta)
 
     def BuscarContrasenia(self, cedula_usuario):
@@ -75,7 +74,7 @@ class Motel:
         :param cedula_usuario: Identificador del usuario
         :return: La contraseña del usuario en una lista si el usuario existe, si no, la lista estara vacia
         """
-        consulta = f"select Contraseña from Usuarios where Documento_Identidad = '{cedula_usuario}'"
+        consulta = f"select Contraseña from Usuarios where Cedula = '{cedula_usuario}'"
         return self.c.select_in_database(consulta)
 
     def IniciarSesion(self, CedulaUsuario, ContraseniaUsuario):
@@ -108,13 +107,9 @@ class Motel:
         CursorCrear.commit()
         CursorCrear.close()
 
-    def buscarTabla(self, cedula):
-        consulta = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitaciones{cedula}'"
-        return self.c.select_in_database(consulta)
-
     def Agregarhabitacion(self, cedula, numero, tipo, capacidad, tipoEntrada, estado):
-        consultaInsert = f"Insert into Habitaciones{cedula} values('{numero}','{tipo}', '{capacidad}', '{tipoEntrada}', '{estado}')"
-        consultaSelect = f"select Numero from Habitaciones{cedula} where Numero = {numero}"
+        consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{tipo}', '{tipoEntrada}', 000000 , 000000, '{capacidad}', 000000, '{estado}')"
+        consultaSelect = f"select Numero, Cedula_Usuario from Habitaciones where Numero = {numero} and Cedula_Usuario = {cedula}"
 
         if self.c.select_in_database(consultaSelect) == []:
             self.c.insert_in_database(consultaInsert)

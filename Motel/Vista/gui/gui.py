@@ -34,7 +34,7 @@ class VentanaLogin(QMainWindow):
         self.ui.pbutton_ingresar.clicked.connect(self.iniciar_sesion)
 
     def nombre_usuario(self, cedula):
-        consulta = (f"select Nombre from Usuarios where Documento_Identidad = {cedula}")
+        consulta = (f"select Nombres from Usuarios where Cedula = {cedula}")
         nombre = self.c.select_in_database(consulta)
         return nombre[0][0]
 
@@ -75,14 +75,15 @@ class VentanaPrincipal(QMainWindow):
         self.ventana = Ui_VentanaPrincipal()
         self.ventana.setupUi(self)
         self.motel = motel
-
         self.nombreUsuario = nombreUsuario
         self.cedula = cedula
+
+
         self.ventana.pbutton_configuracion.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_configuracion))
         self.ventana.pbutton_entradas.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_entradas))
         self.ventana.pbutton_reservas.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_reservas))
         self.ventana.label_bienvenida.setText(f"Bienvenido a InTouch\n                              {self.nombreUsuario}")
-        if self.cedula == '1000410302':
+        if self.cedula == '1000410302' or self.cedula == '1125618030' or self.cedula == '1000414766':
            self.ventana.pbutton_crearUsuario.setEnabled(True)
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_dialogo_crearHabitaciones)
@@ -119,11 +120,6 @@ class VentanaPrincipal(QMainWindow):
 
 
     def abrir_dialogo_crearHabitaciones(self):
-        tabla = self.motel.buscarTabla(self.cedula)
-
-        if tabla == []:
-            self.motel.CrearDatabaseHabitaciones(self.cedula)
-
 
         dialogo = DialogoCrearHabitaciones(self)
         resp = dialogo.exec()
