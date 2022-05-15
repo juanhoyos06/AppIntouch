@@ -86,10 +86,13 @@ class VentanaPrincipal(QMainWindow):
         if self.cedula == '1000410302' or self.cedula == '1125618030' or self.cedula == '1000414766':
            self.ventana.pbutton_crearUsuario.setEnabled(True)
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
-        self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_dialogo_crearHabitaciones)
+        self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_ventana_configuracion)
         self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
         self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
 
+    def abrir_ventana_configuracion(self):
+        self.ventana = VentanaConfiguracion(self.cedula, self.motel)
+        self.ventana.show()
 
     def abrir_dialogo_crearUsuario(self):
         dialog = DialogoCrearUsuario(self)
@@ -192,6 +195,80 @@ class VentanaPrincipal(QMainWindow):
         self.ventana.listView_habitacionesDisponibles.setModel(habitacionesDisponibles)
 
 
+class VentanaConfiguracion(QMainWindow):
+    def __init__(self, cedula, motel : Motel):
+        super().__init__()
+        self.ventana = Ui_VentanaConfiguracion()
+        self.ventana.setupUi(self)
+        self.motel = motel
+        self.cedula = cedula
+        self.servicios = ['No', 'Si']
+
+        self.ventana.pushButton_aceptar.clicked.connect(self.definir_categorias)
+        self.ventana.comboBox_jacuzzi.addItems(self.servicios)
+        self.ventana.comboBox_sauna.addItems(self.servicios)
+        self.ventana.comboBox_turco.addItems(self.servicios)
+        self.ventana.comboBox_sillaTantra.addItems(self.servicios)
+
+
+
+    def definir_categorias(self):
+
+        capturaNombreCategoria = self.ventana.lineedit_nombreCategoria.text()
+        capturaCapacidad = self.ventana.lineedit_capacidad.text()
+        capturaTipoEntrada = self.ventana.lineedit_tipoEntrada.text()
+        capturaPrecioBase = self.ventana.lineedit_precioBase.text()
+        capturaPrecioAdicional = self.ventana.lineedit_precioAdicional.text()
+        capturaPersonaAdicional = self.ventana.lineedit_personaAdicional.text()
+        capturaJacuzzi = self.ventana.comboBox_jacuzzi.currentText()
+        capturaSauna = self.ventana.comboBox_sauna.currentText()
+        capturaTurco = self.ventana.comboBox_turco.currentText()
+        capturaSilla = self.ventana.comboBox_sillaTantra.currentText()
+        capturaOtros = self.ventana.lineedit_otros.text()
+
+
+        if (capturaNombreCategoria != "" and capturaCapacidad != "" and capturaTipoEntrada != "" and capturaPrecioBase != ""
+                and capturaPrecioAdicional != "" and capturaPersonaAdicional != ""):
+            try:
+                self.motel.AgregarCategoria(self.cedula,capturaNombreCategoria,capturaCapacidad,capturaTipoEntrada,
+                                            capturaPrecioBase, capturaPrecioAdicional, capturaPersonaAdicional,capturaJacuzzi,
+                                            capturaSauna, capturaTurco, capturaSilla, capturaOtros)
+            except CategoriaExistenteError as e:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Error Agregando Categoria.")
+                msg_box.setIcon(QMessageBox.Critical)
+                msg_box.setText(e.msg)
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+            else:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Operacion Exitosa")
+                msg_box.setIcon(QMessageBox.Information)
+                msg_box.setText("Categoria agregada correctamente.")
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+
+                self.ventana.lineedit_nombreCategoria.setText("")
+                self.ventana.lineedit_capacidad.setText("")
+                self.ventana.lineedit_tipoEntrada.setText("")
+                self.ventana.lineedit_precioBase.setText("")
+                self.ventana.lineedit_precioAdicional.setText("")
+                self.ventana.lineedit_personaAdicional.setText("")
+                self.ventana.lineedit_precioAdicional.setText("")
+                self.ventana.lineedit_otros.setText("")
+
+
+
+
+
+
+        else:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Error de validación")
+            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setText("Todos los campos obligatorios debe ingresarlos.")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
 
 
 class DialogoCrearUsuario(QDialog):

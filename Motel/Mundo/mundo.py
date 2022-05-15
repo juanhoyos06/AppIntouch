@@ -1,6 +1,6 @@
 from Motel.Mundo.conexion import Conexion
 from Motel.Mundo.errores import UsuarioExistenteError, UsuarioNoExistenteError, ContraseniaIncorrecta, \
-    Usuario_o_ContraseniaIncorrecto, HabitacionExistenteError
+    Usuario_o_ContraseniaIncorrecto, HabitacionExistenteError, CategoriaExistenteError
 
 
 class Habitacion:
@@ -109,12 +109,23 @@ class Motel:
 
     def Agregarhabitacion(self, cedula, numero, tipo, capacidad, tipoEntrada, estado):
         consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{tipo}', '{tipoEntrada}', 000000 , 000000, '{capacidad}', 000000, '{estado}')"
-        consultaSelect = f"select Numero, Cedula_Usuario from Habitaciones where Numero = {numero} and Cedula_Usuario = {cedula}"
+        consultaSelect = f"select Numero, Cedula_Usuario from Habitaciones where Numero = '{numero}' and Cedula_Usuario = '{cedula}'"
 
         if self.c.select_in_database(consultaSelect) == []:
             self.c.insert_in_database(consultaInsert)
         else:
             raise HabitacionExistenteError(numero, f"ya existe una habitacion con el numero: {numero}")
+
+    def AgregarCategoria(self, cedula, nombre, capacidad, tipoEntrada, precioBase, precioAdicional, personaAdicional, jacuzzi, sauna, turco, silla, otros):
+        consultaInsert = f"Insert into Categorias values('{nombre}', '{cedula}', '{capacidad}', '{tipoEntrada}'," \
+                         f" '{precioBase}', '{precioAdicional}', '{personaAdicional}', '{jacuzzi}', '{sauna}', '{turco}', '{silla}', '{otros}')"
+        consultaSelect = f"select Nombre, Cedula_usuario from Categorias where Nombre = '{nombre}' and Cedula_usuario = '{cedula}' "
+
+        if self.c.select_in_database(consultaSelect) == []:
+            self.c.insert_in_database(consultaInsert)
+        else:
+            raise CategoriaExistenteError(nombre, f"Ya existe una categoria con el nombre: {nombre}")
+
 
     def selectTipo(self, cedula, numeroHabitacion):
         consulta= f"select Tipo from Habitaciones{cedula} where Numero = {numeroHabitacion}"

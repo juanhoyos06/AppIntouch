@@ -209,7 +209,7 @@ QPushButton:hover{
 }</string>
       </property>
       <property name="text">
-       <string>Agregar Habitaciones </string>
+       <string>Configurar Habitaciones </string>
       </property>
       <property name="iconSize">
        <size>

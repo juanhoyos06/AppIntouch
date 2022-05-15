@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalubNyyJ.ui'
+## Form generated from reading UI file 'VentanaPrincipalcymgeN.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -48,7 +48,7 @@ class Ui_VentanaPrincipal(object):
         self.page_entradas.setObjectName(u"page_entradas")
         self.listView_habitacionesDisponibles = QListView(self.page_entradas)
         self.listView_habitacionesDisponibles.setObjectName(u"listView_habitacionesDisponibles")
-        self.listView_habitacionesDisponibles.setGeometry(QRect(10, 70, 256, 241))
+        self.listView_habitacionesDisponibles.setGeometry(QRect(0, 70, 421, 241))
         self.pages.addWidget(self.page_entradas)
         self.page_configuracion = QWidget()
         self.page_configuracion.setObjectName(u"page_configuracion")
@@ -247,7 +247,7 @@ class Ui_VentanaPrincipal(object):
         VentanaPrincipal.setWindowTitle(QCoreApplication.translate("VentanaPrincipal", u"Menu Principal", None))
         self.label_bienvenida.setText("")
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
-        self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Agregar Habitaciones ", None))
+        self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Configurar Habitaciones ", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))
         self.pushButton_3.setText(QCoreApplication.translate("VentanaPrincipal", u"Reservas", None))
         self.pbutton_entradas.setText(QCoreApplication.translate("VentanaPrincipal", u"Entradas", None))

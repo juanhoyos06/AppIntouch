@@ -35,6 +35,19 @@ class UsuarioExistenteError(MotelError):
         self.cedula = cedula
         self.msg = msg
 
+class CategoriaExistenteError(MotelError):
+    """
+    Representa una excepción que indica que la categoria ya existe en la base de datos
+
+    Attributes:
+        nombre: un str que indica el nombre de la categoria
+        msg: un str que contiene el mensaje de error
+    """
+    def __init__(self, nombre: str, msg: str):
+
+        self.nombre = nombre
+        self.msg = msg
+
 class HabitacionExistenteError(MotelError):
     def __init__(self, numero: str, msg: str):
 
