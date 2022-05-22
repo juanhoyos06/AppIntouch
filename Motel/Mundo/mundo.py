@@ -183,11 +183,11 @@ class Motel:
     def BuscarhabitacionPrecio(self, cedula, precio):
         consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
                    f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
-                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Precio_base < '{precio}';"
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Precio_base < '{precio}' ORDER BY C.Precio_base;"
         return self.c.select_in_database(consulta)
 
     def BuscarhabitacionCapcidad(self, cedula, capacidad):
         consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
                    f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
-                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Capacidad >= '{capacidad}';"
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Capacidad >= '{capacidad}'ORDER BY C.Precio_base;"
         return self.c.select_in_database(consulta)

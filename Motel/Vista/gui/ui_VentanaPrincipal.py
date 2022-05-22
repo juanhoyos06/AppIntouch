@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalEuDFKt.ui'
+## Form generated from reading UI file 'VentanaPrincipalLtnPOa.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -104,9 +104,9 @@ class Ui_VentanaPrincipal(object):
 
         self.gridLayout.addItem(self.horizontalSpacer_2, 0, 6, 1, 1)
 
-        self.pushButton_filtrar = QPushButton(self.frame_2)
-        self.pushButton_filtrar.setObjectName(u"pushButton_filtrar")
-        self.pushButton_filtrar.setStyleSheet(u"\n"
+        self.pbutton_filtrar = QPushButton(self.frame_2)
+        self.pbutton_filtrar.setObjectName(u"pbutton_filtrar")
+        self.pbutton_filtrar.setStyleSheet(u"\n"
 "QPushButton{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	\n"
@@ -125,7 +125,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "}")
 
-        self.gridLayout.addWidget(self.pushButton_filtrar, 2, 8, 1, 1)
+        self.gridLayout.addWidget(self.pbutton_filtrar, 2, 8, 1, 1)
 
         self.lineedit_precioBus = QLineEdit(self.frame_2)
         self.lineedit_precioBus.setObjectName(u"lineedit_precioBus")
@@ -328,6 +328,9 @@ class Ui_VentanaPrincipal(object):
 
         self.retranslateUi(VentanaPrincipal)
 
+        self.pages.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(VentanaPrincipal)
     # setupUi
 
@@ -345,7 +348,7 @@ class Ui_VentanaPrincipal(object):
         self.label.setText(QCoreApplication.translate("VentanaPrincipal", u"Categoria", None))
         self.label_3.setText(QCoreApplication.translate("VentanaPrincipal", u"Precio", None))
         self.label_2.setText(QCoreApplication.translate("VentanaPrincipal", u"Capacidad", None))
-        self.pushButton_filtrar.setText(QCoreApplication.translate("VentanaPrincipal", u"Filtrar", None))
+        self.pbutton_filtrar.setText(QCoreApplication.translate("VentanaPrincipal", u"Filtrar", None))
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
         self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Configurar Habitaciones ", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))

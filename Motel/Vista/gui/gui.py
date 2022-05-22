@@ -76,6 +76,9 @@ class VentanaPrincipal(QMainWindow):
         self.motel = motel
         self.nombreUsuario = nombreUsuario
         self.cedula = cedula
+        self.Categorias = self.motel.SeleccionarCategoria(self.cedula)
+        self.ListCategorias = []
+
 
 
         self.ventana.pbutton_configuracion.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_configuracion))
@@ -90,6 +93,14 @@ class VentanaPrincipal(QMainWindow):
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_ventana_configuracion)
         self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
         self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
+        self.ventana.pbutton_filtrar.clicked.connect(self.filtrar)
+        self.ventana.comboBox_categoriasBuscar.addItems(self.Lista_categorias())
+
+    def Lista_categorias(self):
+        for i in range(len(self.Categorias)):
+            self.ListCategorias.append(self.Categorias[i][0])
+
+        return self.ListCategorias
 
     def abrir_ventana_configuracion(self):
         self.ventanaC = VentanaConfiguracion(self.cedula, self.motel)
@@ -159,7 +170,7 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
-    def BuscarHabitacion(self, habitacionesDisponibles):
+    def actualizar_tabla(self, habitacionesDisponibles):
         i = len(habitacionesDisponibles)
 
         self.ventana.tableHabitacionesDisp.setRowCount(i)
@@ -174,8 +185,26 @@ class VentanaPrincipal(QMainWindow):
 
     def registrar_entrada(self):
         habitacionesDisponibles = self.motel.BuscarhabitacionDisponible(self.cedula)
-        self.BuscarHabitacion(habitacionesDisponibles)
+        self.actualizar_tabla(habitacionesDisponibles)
 
+    def filtrar(self):
+        capturaCategoria = self.ventana.comboBox_categoriasBuscar.currentText()
+        capturaCapacidad = self.ventana.lineedit_capacidadBus.text()
+        capturaPrecio = self.ventana.lineedit_precioBus.text()
+
+        if capturaCapacidad == "" and capturaPrecio == "":
+            habitacionesDisponibles = self.motel.BuscarhabitacionCategoria(self.cedula, capturaCategoria)
+            self.actualizar_tabla(habitacionesDisponibles)
+
+        elif capturaCapacidad != "" and capturaPrecio == "":
+            habitacionesDisponibles = self.motel.BuscarhabitacionCapcidad(self.cedula, capturaCapacidad)
+            self.actualizar_tabla(habitacionesDisponibles)
+            self.ventana.lineedit_capacidadBus.setText("")
+
+        elif capturaCapacidad == "" and capturaPrecio != "":
+            habitacionesDisponibles = self.motel.BuscarhabitacionPrecio(self.cedula, capturaPrecio)
+            self.actualizar_tabla(habitacionesDisponibles)
+            self.ventana.lineedit_precioBus.setText("")
 
 class VentanaConfiguracion(QMainWindow):
     def __init__(self, cedula, motel : Motel):

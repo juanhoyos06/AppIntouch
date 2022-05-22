@@ -65,6 +65,9 @@ background-color: None;</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0,0,0,0%);</string>
     </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_bienvenida">
       <property name="geometry">
@@ -222,7 +225,7 @@ background-color: None;</string>
         </spacer>
        </item>
        <item row="2" column="8">
-        <widget class="QPushButton" name="pushButton_filtrar">
+        <widget class="QPushButton" name="pbutton_filtrar">
          <property name="styleSheet">
           <string notr="true">
 QPushButton{
