@@ -29,7 +29,6 @@ class VentanaLogin(QMainWindow):
         self._configurar()
         self.show()
 
-
     def _configurar(self):
         self.ui.pbutton_ingresar.clicked.connect(self.iniciar_sesion)
 
@@ -82,17 +81,19 @@ class VentanaPrincipal(QMainWindow):
         self.ventana.pbutton_configuracion.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_configuracion))
         self.ventana.pbutton_entradas.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_entradas))
         self.ventana.pbutton_reservas.clicked.connect(lambda: self.ventana.pages.setCurrentWidget(self.ventana.page_reservas))
-        self.ventana.label_bienvenida.setText(f"Bienvenido a InTouch\n                              {self.nombreUsuario}")
+        self.ventana.label_bienvenida.setText(f"        Bienvenido a InTouch\n                              {self.nombreUsuario}")
+
         if self.cedula == '1000410302' or self.cedula == '1125618030' or self.cedula == '1000414766':
            self.ventana.pbutton_crearUsuario.setEnabled(True)
+
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_ventana_configuracion)
         self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
         self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
 
     def abrir_ventana_configuracion(self):
-        self.ventana = VentanaConfiguracion(self.cedula, self.motel)
-        self.ventana.show()
+        self.ventanaC = VentanaConfiguracion(self.cedula, self.motel)
+        self.ventanaC.show()
 
     def abrir_dialogo_crearUsuario(self):
         dialog = DialogoCrearUsuario(self)
@@ -118,38 +119,6 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setWindowTitle("Operacion Exitosa")
                 msg_box.setIcon(QMessageBox.Information)
                 msg_box.setText("Usuario creado correctamente.")
-                msg_box.setStandardButtons(QMessageBox.Ok)
-                msg_box.exec_()
-
-
-    def abrir_dialogo_crearHabitaciones(self):
-
-        dialogo = DialogoCrearHabitaciones(self)
-        resp = dialogo.exec()
-
-        if resp == QDialog.Accepted:
-            capturaNumHabitacion = dialogo.ui.lineedit_numHabitacion.text()
-            capturaTipo = dialogo.ui.lineedit_tipo.text()
-            capturaCapacidad = dialogo.ui.lineedit_capacidad.text()
-            capturaTipoEntrada = dialogo.ui.lineedit_tipoEntrada.text()
-            capturaEstado = dialogo.ui.lineedit_estado.text()
-            if capturaEstado == "":
-                capturaEstado = 'Disponible'
-
-            try:
-                self.motel.Agregarhabitacion(self.cedula, capturaNumHabitacion, capturaTipo, capturaCapacidad, capturaTipoEntrada, capturaEstado)
-            except HabitacionExistenteError as err:
-                msg_box = QMessageBox(self)
-                msg_box.setWindowTitle("Error Agregando Habitacion.")
-                msg_box.setIcon(QMessageBox.Critical)
-                msg_box.setText(err.msg)
-                msg_box.setStandardButtons(QMessageBox.Ok)
-                msg_box.exec_()
-            else:
-                msg_box = QMessageBox(self)
-                msg_box.setWindowTitle("Operacion Exitosa")
-                msg_box.setIcon(QMessageBox.Information)
-                msg_box.setText("Habitacion agregada correctamente.")
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
@@ -190,41 +159,99 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
+    def BuscarHabitacion(self, habitacionesDisponibles):
+        i = len(habitacionesDisponibles)
+
+        self.ventana.tableHabitacionesDisp.setRowCount(i)
+        tablerow = 0
+
+        for row in habitacionesDisponibles:
+            self.ventana.tableHabitacionesDisp.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+            self.ventana.tableHabitacionesDisp.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+            self.ventana.tableHabitacionesDisp.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(str(row[2])))
+            self.ventana.tableHabitacionesDisp.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(str(row[3])))
+            tablerow += 1
+
     def registrar_entrada(self):
         habitacionesDisponibles = self.motel.BuscarhabitacionDisponible(self.cedula)
-        self.ventana.listView_habitacionesDisponibles.setModel(habitacionesDisponibles)
+        self.BuscarHabitacion(habitacionesDisponibles)
 
 
 class VentanaConfiguracion(QMainWindow):
     def __init__(self, cedula, motel : Motel):
         super().__init__()
-        self.ventana = Ui_VentanaConfiguracion()
-        self.ventana.setupUi(self)
+        self.ventanaC = Ui_VentanaConfiguracion()
+        self.ventanaC.setupUi(self)
         self.motel = motel
         self.cedula = cedula
         self.servicios = ['No', 'Si']
+        self.estados = ['Disponible', 'Ocupada', 'Reservada']
+        self.categorias = self.motel.SeleccionarCategoria(self.cedula)
+        self.listCategorias = []
 
-        self.ventana.pushButton_aceptar.clicked.connect(self.definir_categorias)
-        self.ventana.comboBox_jacuzzi.addItems(self.servicios)
-        self.ventana.comboBox_sauna.addItems(self.servicios)
-        self.ventana.comboBox_turco.addItems(self.servicios)
-        self.ventana.comboBox_sillaTantra.addItems(self.servicios)
+        self.ventanaC.pushButton_aceptar.clicked.connect(self.definir_categorias)
+        self.ventanaC.pushButton_aceptarHab.clicked.connect(self.agregar_habitacion)
+        self.ventanaC.comboBox_jacuzzi.addItems(self.servicios)
+        self.ventanaC.comboBox_sauna.addItems(self.servicios)
+        self.ventanaC.comboBox_turco.addItems(self.servicios)
+        self.ventanaC.comboBox_sillaTantra.addItems(self.servicios)
+        self.ventanaC.comboBox_categorias.addItems(self.lista_categorias())
+        self.ventanaC.comboBox_estado.addItems(self.estados)
+
+    def lista_categorias(self):
+        for i in range(len(self.categorias)):
+            self.listCategorias.append(self.categorias[i][0])
+
+        return self.listCategorias
+
+    def agregar_habitacion(self):
+        capturaNumero = self.ventanaC.lineedit_numHabitacion.text()
+        capturaCategoria = self.ventanaC.comboBox_categorias.currentText()
+        capturaEstado = self.ventanaC.comboBox_estado.currentText()
+
+        if capturaNumero != "" :
+            try:
+                self.motel.Agregarhabitacion(capturaNumero, self.cedula, capturaCategoria, capturaEstado)
+            except HabitacionExistenteError as e:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Error Agregando Habitacion.")
+                msg_box.setIcon(QMessageBox.Critical)
+                msg_box.setText(e.msg)
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+            else:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Operacion Exitosa")
+                msg_box.setIcon(QMessageBox.Information)
+                msg_box.setText("Habitacion agregada correctamente.")
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+
+                self.ventanaC.lineedit_numHabitacion.setText("")
+
+        else:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Error de validación")
+            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setText("Todos los campos obligatorios debe ingresarlos.")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
 
 
 
     def definir_categorias(self):
 
-        capturaNombreCategoria = self.ventana.lineedit_nombreCategoria.text()
-        capturaCapacidad = self.ventana.lineedit_capacidad.text()
-        capturaTipoEntrada = self.ventana.lineedit_tipoEntrada.text()
-        capturaPrecioBase = self.ventana.lineedit_precioBase.text()
-        capturaPrecioAdicional = self.ventana.lineedit_precioAdicional.text()
-        capturaPersonaAdicional = self.ventana.lineedit_personaAdicional.text()
-        capturaJacuzzi = self.ventana.comboBox_jacuzzi.currentText()
-        capturaSauna = self.ventana.comboBox_sauna.currentText()
-        capturaTurco = self.ventana.comboBox_turco.currentText()
-        capturaSilla = self.ventana.comboBox_sillaTantra.currentText()
-        capturaOtros = self.ventana.lineedit_otros.text()
+        capturaNombreCategoria = self.ventanaC.lineedit_nombreCategoria.text()
+        capturaCapacidad = self.ventanaC.lineedit_capacidad.text()
+        capturaTipoEntrada = self.ventanaC.lineedit_tipoEntrada.text()
+        capturaPrecioBase = self.ventanaC.lineedit_precioBase.text()
+        capturaPrecioAdicional = self.ventanaC.lineedit_precioAdicional.text()
+        capturaPersonaAdicional = self.ventanaC.lineedit_personaAdicional.text()
+        capturaJacuzzi = self.ventanaC.comboBox_jacuzzi.currentText()
+        capturaSauna = self.ventanaC.comboBox_sauna.currentText()
+        capturaTurco = self.ventanaC.comboBox_turco.currentText()
+        capturaSilla = self.ventanaC.comboBox_sillaTantra.currentText()
+        capturaOtros = self.ventanaC.lineedit_otros.text()
 
 
         if (capturaNombreCategoria != "" and capturaCapacidad != "" and capturaTipoEntrada != "" and capturaPrecioBase != ""
@@ -248,14 +275,14 @@ class VentanaConfiguracion(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
-                self.ventana.lineedit_nombreCategoria.setText("")
-                self.ventana.lineedit_capacidad.setText("")
-                self.ventana.lineedit_tipoEntrada.setText("")
-                self.ventana.lineedit_precioBase.setText("")
-                self.ventana.lineedit_precioAdicional.setText("")
-                self.ventana.lineedit_personaAdicional.setText("")
-                self.ventana.lineedit_precioAdicional.setText("")
-                self.ventana.lineedit_otros.setText("")
+                self.ventanaC.lineedit_nombreCategoria.setText("")
+                self.ventanaC.lineedit_capacidad.setText("")
+                self.ventanaC.lineedit_tipoEntrada.setText("")
+                self.ventanaC.lineedit_precioBase.setText("")
+                self.ventanaC.lineedit_precioAdicional.setText("")
+                self.ventanaC.lineedit_personaAdicional.setText("")
+                self.ventanaC.lineedit_precioAdicional.setText("")
+                self.ventanaC.lineedit_otros.setText("")
 
 
 

@@ -66,9 +66,10 @@ class Conexion:
 
         return self.select_in_database(consulta)
 
-#c = Conexion()
+c = Conexion()
 #
-#consulta1 = f"SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Habitaciones1000410302'"
+consulta1 = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas, C.Precio_base FROM Habitaciones as H " \
+            f"INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario AND H.Categoria = C.Nombre where H.Estado = 'Disponible' and H.Cedula_Usuario = '1000410302'"
 #consulta2 = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
 #consulta = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
 #Cedula = c.select_in_database(consulta2)
@@ -79,4 +80,4 @@ class Conexion:
 #    print("hello")
 #else:
 #    print("hi")
-#c.select_in_database(consulta1)
+#print(str(c.select_in_database(consulta1)))

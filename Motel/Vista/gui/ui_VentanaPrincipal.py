@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalcymgeN.ui'
+## Form generated from reading UI file 'VentanaPrincipalEuDFKt.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,13 +17,13 @@ class Ui_VentanaPrincipal(object):
     def setupUi(self, VentanaPrincipal):
         if not VentanaPrincipal.objectName():
             VentanaPrincipal.setObjectName(u"VentanaPrincipal")
-        VentanaPrincipal.resize(624, 359)
-        VentanaPrincipal.setMinimumSize(QSize(624, 359))
-        VentanaPrincipal.setMaximumSize(QSize(624, 379))
+        VentanaPrincipal.resize(700, 379)
+        VentanaPrincipal.setMinimumSize(QSize(700, 359))
+        VentanaPrincipal.setMaximumSize(QSize(700, 379))
         VentanaPrincipal.setStyleSheet(u"background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));")
         self.frame = QFrame(VentanaPrincipal)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(185, -1, 441, 361))
+        self.frame.setGeometry(QRect(185, -1, 511, 381))
         self.frame.setToolTipDuration(-1)
         self.frame.setStyleSheet(u"\n"
 "background-color: None;")
@@ -32,7 +32,7 @@ class Ui_VentanaPrincipal(object):
         self.pages = QStackedWidget(self.frame)
         self.pages.setObjectName(u"pages")
         self.pages.setEnabled(True)
-        self.pages.setGeometry(QRect(0, 0, 441, 361))
+        self.pages.setGeometry(QRect(0, 0, 511, 361))
         self.pages.setStyleSheet(u"background-color: rgba(0,0,0,0%);")
         self.page = QWidget()
         self.page.setObjectName(u"page")
@@ -46,9 +46,97 @@ class Ui_VentanaPrincipal(object):
         self.pages.addWidget(self.page)
         self.page_entradas = QWidget()
         self.page_entradas.setObjectName(u"page_entradas")
-        self.listView_habitacionesDisponibles = QListView(self.page_entradas)
-        self.listView_habitacionesDisponibles.setObjectName(u"listView_habitacionesDisponibles")
-        self.listView_habitacionesDisponibles.setGeometry(QRect(0, 70, 421, 241))
+        self.tableHabitacionesDisp = QTableWidget(self.page_entradas)
+        if (self.tableHabitacionesDisp.columnCount() < 4):
+            self.tableHabitacionesDisp.setColumnCount(4)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableHabitacionesDisp.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableHabitacionesDisp.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableHabitacionesDisp.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableHabitacionesDisp.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        self.tableHabitacionesDisp.setObjectName(u"tableHabitacionesDisp")
+        self.tableHabitacionesDisp.setGeometry(QRect(50, 110, 411, 221))
+        self.tableHabitacionesDisp.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.frame_2 = QFrame(self.page_entradas)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setGeometry(QRect(9, 20, 491, 80))
+        self.frame_2.setMinimumSize(QSize(491, 80))
+        self.frame_2.setMaximumSize(QSize(491, 80))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.gridLayout = QGridLayout(self.frame_2)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.comboBox_categoriasBuscar = QComboBox(self.frame_2)
+        self.comboBox_categoriasBuscar.setObjectName(u"comboBox_categoriasBuscar")
+        self.comboBox_categoriasBuscar.setStyleSheet(u"background-color: None;")
+
+        self.gridLayout.addWidget(self.comboBox_categoriasBuscar, 0, 1, 1, 1)
+
+        self.label = QLabel(self.frame_2)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+
+        self.label_3 = QLabel(self.frame_2)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout.addWidget(self.label_3, 0, 7, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 0, 2, 1, 1)
+
+        self.label_2 = QLabel(self.frame_2)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 0, 3, 1, 1)
+
+        self.lineedit_capacidadBus = QLineEdit(self.frame_2)
+        self.lineedit_capacidadBus.setObjectName(u"lineedit_capacidadBus")
+        self.lineedit_capacidadBus.setStyleSheet(u"background-color: None;")
+
+        self.gridLayout.addWidget(self.lineedit_capacidadBus, 0, 5, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 0, 6, 1, 1)
+
+        self.pushButton_filtrar = QPushButton(self.frame_2)
+        self.pushButton_filtrar.setObjectName(u"pushButton_filtrar")
+        self.pushButton_filtrar.setStyleSheet(u"\n"
+"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	border: 0.5px solid;\n"
+"	border-color: rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	border-color: rgb(0, 0, 0);\n"
+"\n"
+"}")
+
+        self.gridLayout.addWidget(self.pushButton_filtrar, 2, 8, 1, 1)
+
+        self.lineedit_precioBus = QLineEdit(self.frame_2)
+        self.lineedit_precioBus.setObjectName(u"lineedit_precioBus")
+        self.lineedit_precioBus.setStyleSheet(u"background-color: None;")
+
+        self.gridLayout.addWidget(self.lineedit_precioBus, 0, 8, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 1, 8, 1, 1)
+
         self.pages.addWidget(self.page_entradas)
         self.page_configuracion = QWidget()
         self.page_configuracion.setObjectName(u"page_configuracion")
@@ -138,9 +226,9 @@ class Ui_VentanaPrincipal(object):
         self.pages.addWidget(self.page_reservas)
         self.frame_botonoes = QFrame(VentanaPrincipal)
         self.frame_botonoes.setObjectName(u"frame_botonoes")
-        self.frame_botonoes.setGeometry(QRect(0, 0, 170, 359))
-        self.frame_botonoes.setMinimumSize(QSize(170, 359))
-        self.frame_botonoes.setMaximumSize(QSize(110, 359))
+        self.frame_botonoes.setGeometry(QRect(0, 0, 170, 379))
+        self.frame_botonoes.setMinimumSize(QSize(170, 379))
+        self.frame_botonoes.setMaximumSize(QSize(110, 379))
         self.frame_botonoes.setToolTipDuration(-1)
         self.frame_botonoes.setLayoutDirection(Qt.LeftToRight)
         self.frame_botonoes.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
@@ -246,6 +334,18 @@ class Ui_VentanaPrincipal(object):
     def retranslateUi(self, VentanaPrincipal):
         VentanaPrincipal.setWindowTitle(QCoreApplication.translate("VentanaPrincipal", u"Menu Principal", None))
         self.label_bienvenida.setText("")
+        ___qtablewidgetitem = self.tableHabitacionesDisp.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("VentanaPrincipal", u"Numero", None));
+        ___qtablewidgetitem1 = self.tableHabitacionesDisp.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("VentanaPrincipal", u"Categoria", None));
+        ___qtablewidgetitem2 = self.tableHabitacionesDisp.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("VentanaPrincipal", u"Capacidad", None));
+        ___qtablewidgetitem3 = self.tableHabitacionesDisp.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("VentanaPrincipal", u"Precio", None));
+        self.label.setText(QCoreApplication.translate("VentanaPrincipal", u"Categoria", None))
+        self.label_3.setText(QCoreApplication.translate("VentanaPrincipal", u"Precio", None))
+        self.label_2.setText(QCoreApplication.translate("VentanaPrincipal", u"Capacidad", None))
+        self.pushButton_filtrar.setText(QCoreApplication.translate("VentanaPrincipal", u"Filtrar", None))
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
         self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Configurar Habitaciones ", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))

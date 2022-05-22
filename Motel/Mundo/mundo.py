@@ -107,8 +107,8 @@ class Motel:
         CursorCrear.commit()
         CursorCrear.close()
 
-    def Agregarhabitacion(self, cedula, numero, tipo, capacidad, tipoEntrada, estado):
-        consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{tipo}', '{tipoEntrada}', 000000 , 000000, '{capacidad}', 000000, '{estado}')"
+    def Agregarhabitacion(self, numero, cedula, categoria, estado):
+        consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{categoria}', '{estado}')"
         consultaSelect = f"select Numero, Cedula_Usuario from Habitaciones where Numero = '{numero}' and Cedula_Usuario = '{cedula}'"
 
         if self.c.select_in_database(consultaSelect) == []:
@@ -126,6 +126,9 @@ class Motel:
         else:
             raise CategoriaExistenteError(nombre, f"Ya existe una categoria con el nombre: {nombre}")
 
+    def SeleccionarCategoria(self, cedula):
+        consulta = f"Select Nombre from Categorias where Cedula_usuario = '{cedula}' "
+        return self.c.select_in_database(consulta)
 
     def selectTipo(self, cedula, numeroHabitacion):
         consulta= f"select Tipo from Habitaciones{cedula} where Numero = {numeroHabitacion}"
@@ -166,5 +169,25 @@ class Motel:
         self.c.update_in_database(consulta)
 
     def BuscarhabitacionDisponible(self, cedula):
-        consulta = f"select * from Habitaciones{cedula} where Estado = 'Disponible'"
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}';"
+        return self.c.select_in_database(consulta)
+
+    def BuscarhabitacionCategoria(self, cedula, categoria):
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND H.Categoria = '{categoria}';"
+        return self.c.select_in_database(consulta)
+
+    def BuscarhabitacionPrecio(self, cedula, precio):
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Precio_base < '{precio}';"
+        return self.c.select_in_database(consulta)
+
+    def BuscarhabitacionCapcidad(self, cedula, capacidad):
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Capacidad >= '{capacidad}';"
         return self.c.select_in_database(consulta)
