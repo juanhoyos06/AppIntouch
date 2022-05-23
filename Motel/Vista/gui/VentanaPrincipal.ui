@@ -26,7 +26,8 @@
    <string>Menu Principal</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));</string>
+   <string notr="true">background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));
+</string>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
@@ -66,7 +67,7 @@ background-color: None;</string>
      <string notr="true">background-color: rgba(0,0,0,0%);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_bienvenida">
@@ -352,34 +353,24 @@ QPushButton:hover{
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-QPushButton{
-	border-radius: 10px;
-	background-color: rgb(255,255,255);
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
-}
-
-QPushButton:hover{
-	border-radius: 10px;
-	background-color: rgb(170, 170, 170);
-	
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
-}</string>
+       <string notr="true">font: 12pt &quot;Sitka Small&quot;;
+border: 0.5px solid;</string>
       </property>
       <property name="text">
-       <string>Configurar Habitaciones </string>
+       <string>Configuracion</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imgs/simbolo-de-interfaz-de-configuracion-de-dos-ruedas-dentadas.png</normaloff>imgs/simbolo-de-interfaz-de-configuracion-de-dos-ruedas-dentadas.png</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>112</width>
-        <height>86</height>
+        <width>205</width>
+        <height>61</height>
        </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="pbutton_modificarHabitaciones">

@@ -6,7 +6,7 @@ from Motel.Vista.gui.ui_DialogoCrearHabitaciones import Ui_DialogoCrearHabitacio
 from Motel.Vista.gui.ui_DialogoModificarHabitaciones import Ui_DialogoModificarHabitaciones
 from Motel.Vista.gui.ui_VentanaDeInicio import Ui_VentanaDeInicio
 from Motel.Vista.gui.ui_DialogoCrearUsuario import Ui_DialogoCrearUsuario
-from Motel.Vista.gui.imgs import *
+
 from Motel.Mundo.errores import UsuarioExistenteError, UsuarioNoExistenteError, HabitacionNoExistenteError
 from PySide2.QtCore import QRegExp
 from PySide2.QtGui import QRegExpValidator, QIntValidator, QStandardItemModel, QStandardItem, QIcon
