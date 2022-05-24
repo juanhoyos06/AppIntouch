@@ -164,8 +164,12 @@ class Motel:
         consulta = f"update Habitaciones{cedula} set TipoEntrada = '{tipoEntradaHabitacionNuevo}' where Numero = {numeroHabitacion}"
         self.c.update_in_database(consulta)
 
-    def ActualizarEstadoHabitacion(self, cedula, numeroHabitacion, EstadoHabitacionNuevo):
-        consulta = f"update Habitaciones{cedula} set Estado = '{EstadoHabitacionNuevo}' where Numero = {numeroHabitacion}"
+    def ActualizarEstadoHabitacion(self, cedula, numeroHabitacion, estado):
+        consulta = f"update Habitaciones set Estado = '{estado}' where Cedula_Usuario = '{cedula}' and Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def entradaHabitacion(self, cedula, numero):
+        consulta = f"update Habitaciones set Estado = 'Ocupada' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
         self.c.update_in_database(consulta)
 
     def BuscarhabitacionDisponible(self, cedula):

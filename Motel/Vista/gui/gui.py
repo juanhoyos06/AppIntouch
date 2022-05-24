@@ -95,6 +95,7 @@ class VentanaPrincipal(QMainWindow):
         self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
         self.ventana.pbutton_filtrar.clicked.connect(self.filtrar)
         self.ventana.comboBox_categoriasBuscar.addItems(self.Lista_categorias())
+        self.ventana.pbutton_registrar.clicked.connect(self.registrar)
 
     def Lista_categorias(self):
         for i in range(len(self.Categorias)):
@@ -199,12 +200,28 @@ class VentanaPrincipal(QMainWindow):
         elif capturaCapacidad != "" and capturaPrecio == "":
             habitacionesDisponibles = self.motel.BuscarhabitacionCapcidad(self.cedula, capturaCapacidad)
             self.actualizar_tabla(habitacionesDisponibles)
-            self.ventana.lineedit_capacidadBus.setText("")
+            self.ventana.lineedit_capacidadBus.clear()
 
         elif capturaCapacidad == "" and capturaPrecio != "":
             habitacionesDisponibles = self.motel.BuscarhabitacionPrecio(self.cedula, capturaPrecio)
             self.actualizar_tabla(habitacionesDisponibles)
-            self.ventana.lineedit_precioBus.setText("")
+            self.ventana.lineedit_precioBus.clear()
+
+    def registrar(self):
+        capturaNum = self.ventana.lineedit_numHab.text()
+
+        if capturaNum != "":
+            self.motel.entradaHabitacion(self.cedula, capturaNum)
+            self.registrar_entrada()
+            self.ventana.lineedit_numHab.clear()
+        else:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Error de registro")
+            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setText("Debe de ingresar el numero de la habitacion que va a ser ocupada")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
+
 
 class VentanaConfiguracion(QMainWindow):
     def __init__(self, cedula, motel : Motel):
@@ -256,7 +273,7 @@ class VentanaConfiguracion(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
-                self.ventanaC.lineedit_numHabitacion.setText("")
+                self.ventanaC.lineedit_numHabitacion.clear()
 
         else:
             msg_box = QMessageBox(self)
@@ -304,14 +321,14 @@ class VentanaConfiguracion(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
-                self.ventanaC.lineedit_nombreCategoria.setText("")
-                self.ventanaC.lineedit_capacidad.setText("")
-                self.ventanaC.lineedit_tipoEntrada.setText("")
-                self.ventanaC.lineedit_precioBase.setText("")
-                self.ventanaC.lineedit_precioAdicional.setText("")
-                self.ventanaC.lineedit_personaAdicional.setText("")
-                self.ventanaC.lineedit_precioAdicional.setText("")
-                self.ventanaC.lineedit_otros.setText("")
+                self.ventanaC.lineedit_nombreCategoria.clear()
+                self.ventanaC.lineedit_capacidad.clear()
+                self.ventanaC.lineedit_tipoEntrada.clear()
+                self.ventanaC.lineedit_precioBase.clear()
+                self.ventanaC.lineedit_precioAdicional.clear()
+                self.ventanaC.lineedit_personaAdicional.clear()
+                self.ventanaC.lineedit_precioAdicional.clear()
+                self.ventanaC.lineedit_otros.clear()
 
 
 

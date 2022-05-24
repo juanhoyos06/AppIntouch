@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalnIuPLb.ui'
+## Form generated from reading UI file 'VentanaPrincipalztZEGT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -59,7 +59,7 @@ class Ui_VentanaPrincipal(object):
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tableHabitacionesDisp.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         self.tableHabitacionesDisp.setObjectName(u"tableHabitacionesDisp")
-        self.tableHabitacionesDisp.setGeometry(QRect(50, 110, 411, 221))
+        self.tableHabitacionesDisp.setGeometry(QRect(30, 110, 451, 201))
         self.tableHabitacionesDisp.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.frame_2 = QFrame(self.page_entradas)
         self.frame_2.setObjectName(u"frame_2")
@@ -138,6 +138,36 @@ class Ui_VentanaPrincipal(object):
 
         self.gridLayout.addItem(self.verticalSpacer, 1, 8, 1, 1)
 
+        self.label_4 = QLabel(self.page_entradas)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(120, 330, 131, 21))
+        self.label_4.setStyleSheet(u"font: 12pt \"MS Shell Dlg 2\";")
+        self.lineedit_numHab = QLineEdit(self.page_entradas)
+        self.lineedit_numHab.setObjectName(u"lineedit_numHab")
+        self.lineedit_numHab.setGeometry(QRect(240, 330, 113, 20))
+        self.lineedit_numHab.setStyleSheet(u"background-color: None;\n"
+"")
+        self.pbutton_registrar = QPushButton(self.page_entradas)
+        self.pbutton_registrar.setObjectName(u"pbutton_registrar")
+        self.pbutton_registrar.setGeometry(QRect(380, 330, 91, 21))
+        self.pbutton_registrar.setStyleSheet(u"\n"
+"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	border: 0.5px solid;\n"
+"	border-color: rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	border-color: rgb(0, 0, 0);\n"
+"\n"
+"}")
         self.pages.addWidget(self.page_entradas)
         self.page_configuracion = QWidget()
         self.page_configuracion.setObjectName(u"page_configuracion")
@@ -316,7 +346,7 @@ class Ui_VentanaPrincipal(object):
 
         self.retranslateUi(VentanaPrincipal)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(VentanaPrincipal)
@@ -337,6 +367,8 @@ class Ui_VentanaPrincipal(object):
         self.label_3.setText(QCoreApplication.translate("VentanaPrincipal", u"Precio", None))
         self.label_2.setText(QCoreApplication.translate("VentanaPrincipal", u"Capacidad", None))
         self.pbutton_filtrar.setText(QCoreApplication.translate("VentanaPrincipal", u"Filtrar", None))
+        self.label_4.setText(QCoreApplication.translate("VentanaPrincipal", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Habitacion numero: </span></p></body></html>", None))
+        self.pbutton_registrar.setText(QCoreApplication.translate("VentanaPrincipal", u"Registrar", None))
         self.pbutton_crearUsuario.setText(QCoreApplication.translate("VentanaPrincipal", u"Crear Usuario", None))
         self.pbutton_configurarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Configuracion", None))
         self.pbutton_modificarHabitaciones.setText(QCoreApplication.translate("VentanaPrincipal", u"Modificar Habitaciones ", None))

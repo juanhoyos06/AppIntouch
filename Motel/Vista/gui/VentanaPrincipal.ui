@@ -67,7 +67,7 @@ background-color: None;</string>
      <string notr="true">background-color: rgba(0,0,0,0%);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_bienvenida">
@@ -106,10 +106,10 @@ background-color: None;</string>
      <widget class="QTableWidget" name="tableHabitacionesDisp">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>30</x>
         <y>110</y>
-        <width>411</width>
-        <height>221</height>
+        <width>451</width>
+        <height>201</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -273,6 +273,69 @@ QPushButton:hover{
         </spacer>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>330</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;Habitacion numero: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineedit_numHab">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>330</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: None;
+</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbutton_registrar">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>330</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	border: 0.5px solid;
+	border-color: rgb(0, 0, 0);
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	border-color: rgb(0, 0, 0);
+
+}</string>
+      </property>
+      <property name="text">
+       <string>Registrar</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_configuracion">
