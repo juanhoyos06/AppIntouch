@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'DialogoModificarHabitacioneshBVmin.ui'
+## Form generated from reading UI file 'DialogoModificarHabitacionesYDcnoy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,10 +17,10 @@ class Ui_DialogoModificarHabitaciones(object):
     def setupUi(self, DialogoModificarHabitaciones):
         if not DialogoModificarHabitaciones.objectName():
             DialogoModificarHabitaciones.setObjectName(u"DialogoModificarHabitaciones")
-        DialogoModificarHabitaciones.resize(625, 507)
+        DialogoModificarHabitaciones.resize(643, 556)
         DialogoModificarHabitaciones.setStyleSheet(u"background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));")
-        self.horizontalLayout = QHBoxLayout(DialogoModificarHabitaciones)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.verticalLayout = QVBoxLayout(DialogoModificarHabitaciones)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tabWidget = QTabWidget(DialogoModificarHabitaciones)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setMinimumSize(QSize(625, 507))
@@ -66,24 +66,24 @@ class Ui_DialogoModificarHabitaciones(object):
 
         self.gridLayout.addWidget(self.label_tipoEntrada, 1, 0, 1, 1)
 
-        self.lineedit_capacidadHabitacion = QLineEdit(self.frame_opciones)
-        self.lineedit_capacidadHabitacion.setObjectName(u"lineedit_capacidadHabitacion")
+        self.lineedit_capacidadCateg = QLineEdit(self.frame_opciones)
+        self.lineedit_capacidadCateg.setObjectName(u"lineedit_capacidadCateg")
 
-        self.gridLayout.addWidget(self.lineedit_capacidadHabitacion, 0, 4, 1, 1)
+        self.gridLayout.addWidget(self.lineedit_capacidadCateg, 0, 4, 1, 1)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer, 0, 2, 1, 1)
 
-        self.lineedit_categoria = QLineEdit(self.frame_opciones)
-        self.lineedit_categoria.setObjectName(u"lineedit_categoria")
+        self.lineedit_Nomcategoria = QLineEdit(self.frame_opciones)
+        self.lineedit_Nomcategoria.setObjectName(u"lineedit_Nomcategoria")
 
-        self.gridLayout.addWidget(self.lineedit_categoria, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.lineedit_Nomcategoria, 0, 1, 1, 1)
 
-        self.lineedit_estadoHabitacion = QLineEdit(self.frame_opciones)
-        self.lineedit_estadoHabitacion.setObjectName(u"lineedit_estadoHabitacion")
+        self.lineedit_precioBase = QLineEdit(self.frame_opciones)
+        self.lineedit_precioBase.setObjectName(u"lineedit_precioBase")
 
-        self.gridLayout.addWidget(self.lineedit_estadoHabitacion, 1, 4, 1, 1)
+        self.gridLayout.addWidget(self.lineedit_precioBase, 1, 4, 1, 1)
 
         self.label_tipoHabitacion = QLabel(self.frame_opciones)
         self.label_tipoHabitacion.setObjectName(u"label_tipoHabitacion")
@@ -99,10 +99,10 @@ class Ui_DialogoModificarHabitaciones(object):
 
         self.gridLayout.addWidget(self.label_tipoEntrada_2, 2, 0, 1, 1)
 
-        self.lineedit_tipoEntrada_2 = QLineEdit(self.frame_opciones)
-        self.lineedit_tipoEntrada_2.setObjectName(u"lineedit_tipoEntrada_2")
+        self.lineedit_precioAdicional = QLineEdit(self.frame_opciones)
+        self.lineedit_precioAdicional.setObjectName(u"lineedit_precioAdicional")
 
-        self.gridLayout.addWidget(self.lineedit_tipoEntrada_2, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.lineedit_precioAdicional, 2, 1, 1, 1)
 
         self.label_tipoEntrada_3 = QLabel(self.frame_opciones)
         self.label_tipoEntrada_3.setObjectName(u"label_tipoEntrada_3")
@@ -111,10 +111,10 @@ class Ui_DialogoModificarHabitaciones(object):
 
         self.gridLayout.addWidget(self.label_tipoEntrada_3, 2, 3, 1, 1)
 
-        self.lineedit_tipoEntrada_3 = QLineEdit(self.frame_opciones)
-        self.lineedit_tipoEntrada_3.setObjectName(u"lineedit_tipoEntrada_3")
+        self.lineedit_personaAdicional = QLineEdit(self.frame_opciones)
+        self.lineedit_personaAdicional.setObjectName(u"lineedit_personaAdicional")
 
-        self.gridLayout.addWidget(self.lineedit_tipoEntrada_3, 2, 4, 1, 1)
+        self.gridLayout.addWidget(self.lineedit_personaAdicional, 2, 4, 1, 1)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -138,18 +138,12 @@ class Ui_DialogoModificarHabitaciones(object):
         self.label_titulo.setStyleSheet(u"background-color:None;\n"
 "font: 75 18pt \"Script MT Bold\";")
         self.label_titulo.setAlignment(Qt.AlignCenter)
-        self.lineedit_numeroHabitacion = QLineEdit(self.ModificarCategorias)
-        self.lineedit_numeroHabitacion.setObjectName(u"lineedit_numeroHabitacion")
-        self.lineedit_numeroHabitacion.setGeometry(QRect(20, 250, 113, 20))
-        self.lineedit_numeroHabitacion.setStyleSheet(u"background-color: None;\n"
+        self.lineedit_nombreCategoria = QLineEdit(self.ModificarCategorias)
+        self.lineedit_nombreCategoria.setObjectName(u"lineedit_nombreCategoria")
+        self.lineedit_nombreCategoria.setGeometry(QRect(20, 250, 113, 20))
+        self.lineedit_nombreCategoria.setStyleSheet(u"background-color: None;\n"
 "border: 2px solid;\n"
 "border-color: rgb(0, 0, 0);")
-        self.buttonBox = QDialogButtonBox(self.ModificarCategorias)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(280, 430, 301, 32))
-        self.buttonBox.setStyleSheet(u"background-color: None;")
-        self.buttonBox.setOrientation(Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.tableHabitaciones = QTableWidget(self.ModificarCategorias)
         if (self.tableHabitaciones.columnCount() < 4):
             self.tableHabitaciones.setColumnCount(4)
@@ -177,7 +171,15 @@ class Ui_DialogoModificarHabitaciones(object):
         self.ModificarHabitaciones.setObjectName(u"ModificarHabitaciones")
         self.tabWidget.addTab(self.ModificarHabitaciones, "")
 
-        self.horizontalLayout.addWidget(self.tabWidget)
+        self.verticalLayout.addWidget(self.tabWidget)
+
+        self.buttonBox = QDialogButtonBox(DialogoModificarHabitaciones)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setStyleSheet(u"background-color: None;")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+
+        self.verticalLayout.addWidget(self.buttonBox)
 
 
         self.retranslateUi(DialogoModificarHabitaciones)
@@ -194,10 +196,10 @@ class Ui_DialogoModificarHabitaciones(object):
         self.label_capacidadHabitacion.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Capacidad ", None))
         self.label_tipoEntrada.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Tipo Entrada ", None))
         self.label_tipoHabitacion.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Nombre", None))
-        self.label_tipoEntrada_2.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Tipo Entrada ", None))
-        self.label_tipoEntrada_3.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Tipo Entrada ", None))
+        self.label_tipoEntrada_2.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Precio hora adicional", None))
+        self.label_tipoEntrada_3.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Precio persona adicional", None))
         self.label_titulo.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Modificar Categorias ", None))
-        self.lineedit_numeroHabitacion.setPlaceholderText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Nombre Categoria", None))
+        self.lineedit_nombreCategoria.setPlaceholderText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Nombre Categoria", None))
         ___qtablewidgetitem = self.tableHabitaciones.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("DialogoModificarHabitaciones", u"Numero", None));
         ___qtablewidgetitem1 = self.tableHabitaciones.horizontalHeaderItem(1)

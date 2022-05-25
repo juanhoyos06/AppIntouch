@@ -14,6 +14,7 @@ from PySide2.QtWidgets import QMainWindow, QApplication, QDialog, QMessageBox, Q
 from PySide2 import QtGui, QtCore, QtWidgets
 from PySide2.QtCore import QPropertyAnimation
 
+from Motel.Vista.gui.ui_VentanaModificar import Ui_VentanaModificar
 from Motel.Vista.gui.ui_VentanaPrincipal import Ui_VentanaPrincipal
 from Motel.Vista.gui.ui_VentanaConfiguracion import Ui_VentanaConfiguracion
 
@@ -91,7 +92,7 @@ class VentanaPrincipal(QMainWindow):
 
         self.ventana.pbutton_crearUsuario.clicked.connect(self.abrir_dialogo_crearUsuario)
         self.ventana.pbutton_configurarHabitaciones.clicked.connect(self.abrir_ventana_configuracion)
-        self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_dialogo_modificarHabitaciones)
+        self.ventana.pbutton_modificarHabitaciones.clicked.connect(self.abrir_ventana_modificar)
         self.ventana.pbutton_entradas.clicked.connect(self.registrar_entrada)
         self.ventana.pbutton_filtrar.clicked.connect(self.filtrar)
         self.ventana.comboBox_categoriasBuscar.addItems(self.Lista_categorias())
@@ -106,6 +107,11 @@ class VentanaPrincipal(QMainWindow):
     def abrir_ventana_configuracion(self):
         self.ventanaC = VentanaConfiguracion(self.cedula, self.motel)
         self.ventanaC.show()
+
+    def abrir_ventana_modificar(self):
+        self.ventanaM = VentanaModificar(self.cedula, self.motel)
+        self.ventanaM.show()
+        self.ventanaM.mostrar_categorias()
 
     def abrir_dialogo_crearUsuario(self):
         dialog = DialogoCrearUsuario(self)
@@ -134,44 +140,7 @@ class VentanaPrincipal(QMainWindow):
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
 
-    def abrir_dialogo_modificarHabitaciones(self):
-        dialogo = DialogoModificarHabitaciones(self)
-        resp = dialogo.exec()
-
-        if resp == QDialog.Accepted:
-            capturaNumero = dialogo.ui.lineedit_numeroHabitacion.text()
-            capturaTipo = dialogo.ui.lineedit_tipoHabitacion.text()
-            capturaCapacidad = dialogo.ui.lineedit_capacidadHabitacion.text()
-            capturaTipoEntrada = dialogo.ui.lineedit_tipoEntrada.text()
-            capturaEstado = dialogo.ui.lineedit_estadoHabitacion.text()
-
-            if capturaNumero != "":
-
-
-                if capturaTipo != "":
-
-                    self.motel.ActualizarTipoHabitacion(self.cedula,capturaNumero, capturaTipo)
-
-                if capturaCapacidad != "":
-
-                    self.motel.ActualizarCapacidadHabitacion(self.cedula, capturaNumero, capturaCapacidad)
-
-                if capturaTipoEntrada != "":
-
-                    self.motel.ActualizarTipoEntradaHabitacion(self.cedula, capturaNumero, capturaTipoEntrada)
-
-                if capturaEstado != "":
-
-                    self.motel.ActualizarEstadoHabitacion(self.cedula,capturaNumero, capturaEstado)
-            else:
-                msg_box = QMessageBox(self)
-                msg_box.setWindowTitle("Error de validación")
-                msg_box.setIcon(QMessageBox.Critical)
-                msg_box.setText("Debe ingresar el numero de la habitacion que desea modificar")
-                msg_box.setStandardButtons(QMessageBox.Ok)
-                msg_box.exec_()
-
-    def actualizar_tabla(self, habitacionesDisponibles):
+    def actualizar_tabla_habitaciones(self, habitacionesDisponibles):
         i = len(habitacionesDisponibles)
 
         self.ventana.tableHabitacionesDisp.setRowCount(i)
@@ -186,7 +155,7 @@ class VentanaPrincipal(QMainWindow):
 
     def registrar_entrada(self):
         habitacionesDisponibles = self.motel.BuscarhabitacionDisponible(self.cedula)
-        self.actualizar_tabla(habitacionesDisponibles)
+        self.actualizar_tabla_habitaciones(habitacionesDisponibles)
 
     def filtrar(self):
         capturaCategoria = self.ventana.comboBox_categoriasBuscar.currentText()
@@ -195,16 +164,16 @@ class VentanaPrincipal(QMainWindow):
 
         if capturaCapacidad == "" and capturaPrecio == "":
             habitacionesDisponibles = self.motel.BuscarhabitacionCategoria(self.cedula, capturaCategoria)
-            self.actualizar_tabla(habitacionesDisponibles)
+            self.actualizar_tabla_habitaciones(habitacionesDisponibles)
 
         elif capturaCapacidad != "" and capturaPrecio == "":
             habitacionesDisponibles = self.motel.BuscarhabitacionCapcidad(self.cedula, capturaCapacidad)
-            self.actualizar_tabla(habitacionesDisponibles)
+            self.actualizar_tabla_habitaciones(habitacionesDisponibles)
             self.ventana.lineedit_capacidadBus.clear()
 
         elif capturaCapacidad == "" and capturaPrecio != "":
             habitacionesDisponibles = self.motel.BuscarhabitacionPrecio(self.cedula, capturaPrecio)
-            self.actualizar_tabla(habitacionesDisponibles)
+            self.actualizar_tabla_habitaciones(habitacionesDisponibles)
             self.ventana.lineedit_precioBus.clear()
 
     def registrar(self):
@@ -233,7 +202,7 @@ class VentanaConfiguracion(QMainWindow):
         self.servicios = ['No', 'Si']
         self.estados = ['Disponible', 'Ocupada', 'Reservada']
         self.categorias = self.motel.SeleccionarCategoria(self.cedula)
-        self.listCategorias = []
+        self.listCategorias = ['Seleccionar']
 
         self.ventanaC.pushButton_aceptar.clicked.connect(self.definir_categorias)
         self.ventanaC.pushButton_aceptarHab.clicked.connect(self.agregar_habitacion)
@@ -255,7 +224,7 @@ class VentanaConfiguracion(QMainWindow):
         capturaCategoria = self.ventanaC.comboBox_categorias.currentText()
         capturaEstado = self.ventanaC.comboBox_estado.currentText()
 
-        if capturaNumero != "" :
+        if capturaNumero != "" and capturaCategoria != "Seleccionar":
             try:
                 self.motel.Agregarhabitacion(capturaNumero, self.cedula, capturaCategoria, capturaEstado)
             except HabitacionExistenteError as e:
@@ -388,22 +357,180 @@ class DialogoCrearHabitaciones(QDialog):
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec_()
 
-class DialogoModificarHabitaciones(QDialog):
-    def __init__(self, parent = None):
-        QDialog.__init__(self,parent)
-        self.ui = Ui_DialogoModificarHabitaciones()
-        self.ui.setupUi(self)
+class VentanaModificar(QMainWindow):
+    def __init__(self, cedula, motel: Motel):
+        super().__init__()
+        self.ventanaM = Ui_VentanaModificar()
+        self.ventanaM.setupUi(self)
+        self.motel = motel
+        self.cedula = cedula
+        self.servicios = ['Seleccionar', 'No', 'Si']
+        self.estados = ['Seleccionar', 'Disponible', 'Ocupada', 'Reservada']
+        self.categorias = self.motel.SeleccionarCategoria(self.cedula)
+        self.listCategorias = ['Seleccionar']
+        self.listHabitaciones = ['Seleccionar']
+        self.habitaciones = self.motel.SeleccionarNumHabitacion(self.cedula)
 
-    def accept(self) -> None:
-        capturaNumHabitacion = self.ui.lineedit_numeroHabitacion.text()
+        self.ventanaM.pbutton_modificar.clicked.connect(self.ModificarCategorias)
+        self.ventanaM.pbutton_refrescar.clicked.connect(self.mostrar_categorias)
+        #self.ventanaM.pbutton_limpiar.clicked.connect(self.LimpiarModificarCatgorias)
+        self.ventanaM.pbutton_volver.clicked.connect(self.volver)
+        self.ventanaM.comboBox_categorias.addItems(self.lista_categorias())
+        self.ventanaM.comboBox_categoriasMH.addItems(self.listCategorias)
+        self.ventanaM.comboBox_jacuzzi.addItems(self.servicios)
+        self.ventanaM.comboBox_sauna.addItems(self.servicios)
+        self.ventanaM.comboBox_turco.addItems(self.servicios)
+        self.ventanaM.comboBox_numeroHabitacion.addItems(self.lista_habitaciones())
+        self.ventanaM.pbutton_refrescar_2.clicked.connect(self.mostrar_habitaciones)
+        self.ventanaM.pbutton_modificar_mh.clicked.connect(self.ModificarHabitaciones)
+        self.ventanaM.pbutton_volver_mh.clicked.connect(self.volver)
 
-        if capturaNumHabitacion != "":
-            super().accept()
+
+    def lista_categorias(self):
+        for i in range(len(self.categorias)):
+            self.listCategorias.append(self.categorias[i][0])
+
+        return self.listCategorias
+
+    def mostrar_categorias(self):
+        categorias = self.motel.BuscarCategorias(self.cedula)
+
+        i = len(categorias)
+
+        self.ventanaM.tableCategorias.setRowCount(i)
+        tablerow = 0
+
+        for row in categorias:
+            self.ventanaM.tableCategorias.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+            self.ventanaM.tableCategorias.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(str(row[1])))
+            self.ventanaM.tableCategorias.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+            self.ventanaM.tableCategorias.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(str(row[3])))
+            self.ventanaM.tableCategorias.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(str(row[4])))
+            self.ventanaM.tableCategorias.setItem(tablerow, 5, QtWidgets.QTableWidgetItem(str(row[5])))
+            tablerow += 1
+
+    def ModificarCategorias(self):
+
+        capturaNombreCategoria = self.ventanaM.comboBox_categorias.currentText()
+        capturaNombre =          self.ventanaM.lineedit_Nomcategoria.text()
+        capturaCapacidad =       self.ventanaM.lineedit_capacidadCateg.text()
+        capturaTipoEntrada =     self.ventanaM.lineedit_tipoEntrada.text()
+        capturaPrecioBase =      self.ventanaM.lineedit_precioBase.text()
+        capturaPrecioAdicional = self.ventanaM.lineedit_precioAdicional.text()
+        capturaPersonaAdicional =self.ventanaM.lineedit_personaAdicional.text()
+
+        if capturaNombreCategoria != "Seleccionar":
+            if capturaNombre != "":
+                self.motel.ActualizarNombreCategoria(self.cedula,capturaNombreCategoria, capturaNombre)
+                self.ventanaM.lineedit_Nomcategoria.clear()
+
+            if capturaCapacidad != "":
+                self.motel.ActualizarCapacidadCategoria(self.cedula, capturaNombreCategoria, capturaCapacidad)
+                self.ventanaM.lineedit_capacidadCateg.clear()
+
+            if capturaTipoEntrada != "":
+                self.motel.ActualizarTipoEntradaCategoria(self.cedula, capturaNombreCategoria, capturaTipoEntrada)
+                self.ventanaM.lineedit_tipoEntrada.clear()
+
+            if capturaPrecioBase != "":
+                self.motel.ActualizarPrecioBase(self.cedula,capturaNombreCategoria, capturaPrecioBase)
+                self.ventanaM.lineedit_precioBase.clear()
+
+            if capturaPrecioAdicional != "":
+                self.motel.ActualizarPrecioHoraAdicional(self.cedula, capturaNombreCategoria, capturaPrecioAdicional)
+                self.ventanaM.lineedit_precioAdicional.clear()
+
+            if capturaPersonaAdicional != "":
+                self.motel.ActualizarPrecioPersonaAdicional(self.cedula, capturaNombreCategoria, capturaPersonaAdicional)
+                self.ventanaM.lineedit_personaAdicional.clear()
+
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Operacion Exitosa")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("Categoria modificada correctamente")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
+            self.mostrar_categorias()
         else:
-
             msg_box = QMessageBox(self)
             msg_box.setWindowTitle("Error de validación")
             msg_box.setIcon(QMessageBox.Critical)
-            msg_box.setText("Primero debe ingresar el numero de la habitacion ")
+            msg_box.setText("Debe seleccionar el nombre de la categoria a modificar")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
+
+    def LimpiarModificarCategorias(self):
+
+        self.ventanaM.lineedit_Nomcategoria.clear()
+        self.ventanaM.lineedit_capacidadCateg.clear()
+        self.ventanaM.lineedit_tipoEntrada.clear()
+        self.ventanaM.lineedit_precioBase.clear()
+        self.ventanaM.lineedit_precioAdicional.clear()
+        self.ventanaM.lineedit_personaAdicional.clear()
+
+    def volver(self):
+        self.close()
+
+    def mostrar_habitaciones(self):
+        habitaciones = self.motel.BuscarHabitaciones(self.cedula)
+
+        i = len(habitaciones)
+
+        self.ventanaM.tableHabitaciones.setRowCount(i)
+        tablerow = 0
+
+        for row in habitaciones:
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[4]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 5, QtWidgets.QTableWidgetItem(row[5]))
+            self.ventanaM.tableHabitaciones.setItem(tablerow, 6, QtWidgets.QTableWidgetItem(row[6]))
+            tablerow += 1
+
+    def lista_habitaciones(self):
+        for i in range(len(self.habitaciones)):
+            self.listHabitaciones.append(self.habitaciones[i][0])
+
+        return self.listHabitaciones
+
+    def ModificarHabitaciones(self):
+
+        capturaNumeroH  = self.ventanaM.comboBox_numeroHabitacion.currentText()
+        capturaCategoria = self.ventanaM.comboBox_categoriasMH.currentText()
+        capturaJacuzzi = self.ventanaM.comboBox_jacuzzi.currentText()
+        capturaSauna = self.ventanaM.comboBox_sauna.currentText()
+        CapturaTurco = self.ventanaM.comboBox_turco.currentText()
+        CapturaOtros = self.ventanaM.lineedit_otros.text()
+
+        if capturaNumeroH != 'Seleccionar':
+            if capturaCategoria != 'Seleccionar':
+                self.motel.ActualizarCategoriaHabitacion(self.cedula, capturaNumeroH, capturaCategoria)
+
+            if capturaJacuzzi != 'Seleccionar':
+                self.motel.ActualizarJacuzziHabitacion(self.cedula, capturaNumeroH, capturaJacuzzi)
+
+            if capturaSauna != 'Seleccionar':
+                self.motel.ActualizarSaunaHabitacion(self.cedula, capturaNumeroH, capturaSauna)
+
+            if CapturaTurco != 'Seleccionar':
+                self.motel.ActualizarTurcoHabitacion(self.cedula, capturaNumeroH, CapturaTurco)
+
+            if CapturaOtros != '':
+                self.motel.ActualizarOtrosHabitacion(self.cedula, capturaNumeroH, CapturaOtros)
+
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Operacion Exitosa")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("Habitacion modificada correctamente")
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec_()
+            self.mostrar_habitaciones()
+        else:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Error de validación")
+            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setText("Debe seleccionar el numero de la habitacion a modificar")
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec_()

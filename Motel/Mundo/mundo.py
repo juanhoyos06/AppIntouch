@@ -147,25 +147,69 @@ class Motel:
         consulta = f"select Estado from Habitaciones{cedula} where Numero = {numeroHabitacion}"
         self.c.select_in_database(consulta)
 
+
+#>>>>>>>>>>>>>>>>>>>>>>>>Metodos Categorias<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    def ActualizarNombreCategoria(self, cedula, nombreCategoria, NuevoNombre):
+        consulta = f"update Categorias set Nombre = '{NuevoNombre}' where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarCapacidadCategoria(self, cedula, nombreCategoria, capacidad):
+        consulta = f"update Categorias set Capacidad = {capacidad} where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarTipoEntradaCategoria(self, cedula, nombreCategoria, tipoEntradaHabitacionNuevo):
+        consulta = f"update Categorias set Tipo_Entrada = '{tipoEntradaHabitacionNuevo}' where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarPrecioBase(self, cedula, nombreCategoria, PrecioBaseNuevo):
+        consulta = f"update Categorias set Precio_base = '{PrecioBaseNuevo}' where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarPrecioHoraAdicional(self, cedula, nombreCategoria, PrecioAdicionalNuevo):
+        consulta = f"update Categorias set Precio_hora_adicional = '{PrecioAdicionalNuevo}' where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarPrecioPersonaAdicional(self, cedula, nombreCategoria, PrecioPersonaAdicionalNuevo):
+        consulta = f"update Categorias set Precio_hora_adicional = '{PrecioPersonaAdicionalNuevo}' where Nombre = '{nombreCategoria}' and Cedula_usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def BuscarCategorias(self, cedula):
+        consulta = f"SELECT Nombre, Capacidad, Tipo_Entrada, Precio_base, Precio_hora_adicional," \
+                   f"Precio_persona_adicional FROM Categorias WHERE Cedula_usuario = '{cedula}'"
+        return self.c.select_in_database(consulta)
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FIN CATEGORIAS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# >>>>>>>>>>>>>>>>>>>>>>>>Metodos Habitaciones<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     def ActualizarNumeroHabitacion(self, cedula,numeroHabitacion, numeroHabitacionNuevo):
-        consulta = f"update Habitaciones{cedula} set Numero = {numeroHabitacionNuevo} where Numero = {numeroHabitacion}"
-        self.c.update_in_database(consulta)
-
-    def ActualizarTipoHabitacion(self, cedula, numeroHabitacion, tipoHabitacionNuevo):
-
-        consulta = f"update Habitaciones{cedula} set Tipo = '{tipoHabitacionNuevo}' where Numero = {numeroHabitacion}"
-        self.c.update_in_database(consulta)
-
-    def ActualizarCapacidadHabitacion(self, cedula, numeroHabitacion, capacidadHabitacionNuevo):
-        consulta = f"update Habitaciones{cedula} set Capacidad = '{capacidadHabitacionNuevo}' where Numero = {numeroHabitacion}"
-        self.c.update_in_database(consulta)
-
-    def ActualizarTipoEntradaHabitacion(self, cedula, numeroHabitacion, tipoEntradaHabitacionNuevo):
-        consulta = f"update Habitaciones{cedula} set TipoEntrada = '{tipoEntradaHabitacionNuevo}' where Numero = {numeroHabitacion}"
+        consulta = f"update Habitaciones set Numero = {numeroHabitacionNuevo} where " \
+                   f"Numero = {numeroHabitacion} and Cedula_Usuario = '{cedula}' "
         self.c.update_in_database(consulta)
 
     def ActualizarEstadoHabitacion(self, cedula, numeroHabitacion, estado):
         consulta = f"update Habitaciones set Estado = '{estado}' where Cedula_Usuario = '{cedula}' and Numero = {numeroHabitacion}"
+        self.c.update_in_database(consulta)
+
+    def ActualizarCategoriaHabitacion(self, cedula, numero, categoria):
+        consulta = f"update Habitaciones set Categoria = '{categoria}' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
+        self.c.update_in_database(consulta)
+
+
+    def ActualizarJacuzziHabitacion(self, cedula, numero, jacuzzi):
+        consulta = f"UPDATE Habitaciones SET Jacuzzi = '{jacuzzi}' WHERE Numero = '{numero}' AND Cedula_Usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarSaunaHabitacion(self, cedula, numero, sauna):
+        consulta = f"UPDATE Habitaciones SET Sauna = '{sauna}' WHERE Numero = '{numero}' AND Cedula_Usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarTurcoHabitacion(self, cedula, numero, turco):
+        consulta = f"UPDATE Habitaciones SET Turco = '{turco}' WHERE Numero = '{numero}' AND Cedula_Usuario = '{cedula}'"
+        self.c.update_in_database(consulta)
+
+    def ActualizarOtrosHabitacion(self, cedula, numero, otros):
+        consulta = f"UPDATE Habitaciones SET Otros = '{otros}' WHERE Numero = '{numero}' AND Cedula_Usuario = '{cedula}'"
         self.c.update_in_database(consulta)
 
     def entradaHabitacion(self, cedula, numero):
@@ -194,4 +238,12 @@ class Motel:
         consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
                    f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
                    f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}' AND C.Capacidad >= '{capacidad}'ORDER BY C.Precio_base;"
+        return self.c.select_in_database(consulta)
+
+    def BuscarHabitaciones(self, cedula):
+        consulta = f"select Numero, Categoria, Estado, Jacuzzi, Sauna, Turco, Otros from Habitaciones Where Cedula_Usuario = '{cedula}'"
+        return self.c.select_in_database(consulta)
+
+    def SeleccionarNumHabitacion(self, cedula):
+        consulta = f"Select Numero from Habitaciones where Cedula_Usuario = '{cedula}' "
         return self.c.select_in_database(consulta)

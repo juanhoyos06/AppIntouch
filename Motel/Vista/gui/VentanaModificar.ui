@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaModificar</class>
+ <widget class="QWidget" name="VentanaModificar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>643</width>
+    <height>525</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>643</width>
+    <height>525</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>643</width>
+    <height>525</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Modificar</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qconicalgradient(cx:1, cy:1, angle:195, stop:0.676136 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 0, 255));</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>625</width>
+     <height>507</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>625</width>
+     <height>507</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>625</width>
+     <height>507</height>
+    </size>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="ModificarCategorias">
+    <attribute name="title">
+     <string>ModificarCategorias</string>
+    </attribute>
+    <widget class="QFrame" name="frame_opciones">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>300</y>
+       <width>571</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineedit_tipoEntrada"/>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_estadoHabitacion">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Precio Base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_capacidadHabitacion">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Capacidad </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_tipoEntrada">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Tipo Entrada </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="lineedit_capacidadCateg"/>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineedit_Nomcategoria"/>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLineEdit" name="lineedit_precioBase"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_tipoHabitacion">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_precioHoraAdicional">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Precio hora adicional</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineedit_precioAdicional"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_precioPersonaAdicional">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Precio persona adicional</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLineEdit" name="lineedit_personaAdicional"/>
+      </item>
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_titulo">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>0</y>
+       <width>421</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>421</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>421</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Script MT Bold</family>
+       <pointsize>18</pointsize>
+       <weight>9</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferDefault</stylestrategy>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:None;
+font: 75 18pt &quot;Script MT Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Modificar Categorias </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableCategorias">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>601</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Capacidad</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Tipo Entrada</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Precio base</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Hora adicional</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Persona adicional</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>270</y>
+       <width>251</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+
+color:rgb(130, 130, 130)</string>
+     </property>
+     <property name="text">
+      <string>Ingrese los campos que desea cambiar </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_limpiar">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Limpiar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_modificar">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Modificar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_refrescar">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>250</y>
+       <width>71</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Refrescar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_volver">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Volver</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_categorias">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>250</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;</string>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ModificarHabitaciones">
+    <attribute name="title">
+     <string>ModificarHabitaciones</string>
+    </attribute>
+    <widget class="QLabel" name="label_titulo_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>0</y>
+       <width>421</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>421</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>421</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Script MT Bold</family>
+       <pointsize>18</pointsize>
+       <weight>9</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferDefault</stylestrategy>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:None;
+font: 75 18pt &quot;Script MT Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Modificar Habitaciones</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableHabitaciones">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>591</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;</string>
+     </property>
+     <column>
+      <property name="text">
+       <string>Numero</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Categoria</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Estado</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jacuzzi</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sauna</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Turco </string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Otros</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>270</y>
+       <width>251</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+
+color:rgb(130, 130, 130)</string>
+     </property>
+     <property name="text">
+      <string>Ingrese los campos que desea cambiar </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_volver_mh">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Volver</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_opciones_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>300</y>
+       <width>571</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="4">
+       <widget class="QComboBox" name="comboBox_turco">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBox_sauna">
+        <property name="styleSheet">
+         <string notr="true">background-color: None;</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_tipoEntrada_2">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Sauna</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineedit_otros"/>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_capacidadHabitacion_2">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Jacuzzi</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_tipoHabitacion_2">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Categoria</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_precioHoraAdicional_2">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Otros</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="4">
+       <widget class="QComboBox" name="comboBox_jacuzzi">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_estadoHabitacion_2">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Turco</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_categoriasMH">
+        <property name="styleSheet">
+         <string notr="true">background-color: None;</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pbutton_limpiar_mh">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Limpiar</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_numeroHabitacion">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>250</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: None;</string>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_refrescar_2">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>250</y>
+       <width>71</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Refrescar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbutton_modificar_mh">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Modificar</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
