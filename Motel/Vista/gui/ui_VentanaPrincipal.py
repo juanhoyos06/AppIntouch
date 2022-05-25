@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaPrincipalztZEGT.ui'
+## Form generated from reading UI file 'VentanaPrincipaloPLPUm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -44,6 +44,8 @@ class Ui_VentanaPrincipal(object):
         self.label_bienvenida.setMaximumSize(QSize(411, 321))
         self.label_bienvenida.setFocusPolicy(Qt.TabFocus)
         self.label_bienvenida.setStyleSheet(u"font: 75 18pt \"Script MT Bold\";")
+        self.label_bienvenida.setPixmap(QPixmap(u"imgs/simbolo-de-interfaz-de-configuracion-de-dos-ruedas-dentadas.png"))
+        self.label_bienvenida.setScaledContents(True)
         self.pages.addWidget(self.page)
         self.page_entradas = QWidget()
         self.page_entradas.setObjectName(u"page_entradas")
@@ -177,24 +179,20 @@ class Ui_VentanaPrincipal(object):
         self.pbutton_crearUsuario.setGeometry(QRect(20, 40, 127, 61))
         self.pbutton_crearUsuario.setMinimumSize(QSize(127, 61))
         self.pbutton_crearUsuario.setMaximumSize(QSize(127, 61))
-        self.pbutton_crearUsuario.setStyleSheet(u"\n"
-"QPushButton{\n"
-"	border-radius: 10px;\n"
-"	background-color: rgb(255,255,255);\n"
-"	font: 75 14pt \"Script MT Bold\";\n"
-"	color: rgb(0,0, 0);\n"
-"	border: 5px solid;\n"
-"	border- color: rgb(0, 0, 0);\n"
+        self.pbutton_crearUsuario.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	border-radius: 10px;\n"
+"	\n"
 "	background-color: rgb(170, 170, 170);\n"
 "	\n"
-"	font: 75 14pt \"Script MT Bold\";\n"
-"	color: rgb(0,0, 0);\n"
-"	border: 5px solid;\n"
-"	border- color: rgb(0, 0, 0);\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"\n"
 "}")
         self.pbutton_crearUsuario.setIconSize(QSize(112, 86))
         self.pbutton_configurarHabitaciones = QPushButton(self.page_configuracion)
@@ -202,8 +200,20 @@ class Ui_VentanaPrincipal(object):
         self.pbutton_configurarHabitaciones.setGeometry(QRect(200, 40, 205, 61))
         self.pbutton_configurarHabitaciones.setMinimumSize(QSize(205, 61))
         self.pbutton_configurarHabitaciones.setMaximumSize(QSize(205, 61))
-        self.pbutton_configurarHabitaciones.setStyleSheet(u"font: 12pt \"Sitka Small\";\n"
-"border: 0.5px solid;")
+        self.pbutton_configurarHabitaciones.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
         icon = QIcon()
         icon.addFile(u"imgs/simbolo-de-interfaz-de-configuracion-de-dos-ruedas-dentadas.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pbutton_configurarHabitaciones.setIcon(icon)
@@ -214,24 +224,19 @@ class Ui_VentanaPrincipal(object):
         self.pbutton_modificarHabitaciones.setGeometry(QRect(200, 150, 205, 61))
         self.pbutton_modificarHabitaciones.setMinimumSize(QSize(205, 61))
         self.pbutton_modificarHabitaciones.setMaximumSize(QSize(205, 61))
-        self.pbutton_modificarHabitaciones.setStyleSheet(u"\n"
-"QPushButton{\n"
-"	border-radius: 10px;\n"
-"	background-color: rgb(255,255,255);\n"
-"	font: 75 14pt \"Script MT Bold\";\n"
-"	color: rgb(0,0, 0);\n"
-"	border: 5px solid;\n"
-"	border- color: rgb(0, 0, 0);\n"
+        self.pbutton_modificarHabitaciones.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	border-radius: 10px;\n"
+"	\n"
 "	background-color: rgb(170, 170, 170);\n"
 "	\n"
-"	font: 75 14pt \"Script MT Bold\";\n"
-"	color: rgb(0,0, 0);\n"
-"	border: 5px solid;\n"
-"	border- color: rgb(0, 0, 0);\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
 "}")
         self.pbutton_modificarHabitaciones.setIconSize(QSize(112, 86))
         self.pages.addWidget(self.page_configuracion)

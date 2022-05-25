@@ -67,7 +67,7 @@ background-color: None;</string>
      <string notr="true">background-color: rgba(0,0,0,0%);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_bienvenida">
@@ -99,6 +99,12 @@ background-color: None;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>imgs/simbolo-de-interfaz-de-configuracion-de-dos-ruedas-dentadas.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -364,24 +370,20 @@ QPushButton:hover{
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-QPushButton{
-	border-radius: 10px;
-	background-color: rgb(255,255,255);
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
+       <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
 }
 
 QPushButton:hover{
-	border-radius: 10px;
+	
 	background-color: rgb(170, 170, 170);
 	
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+
 }</string>
       </property>
       <property name="text">
@@ -416,8 +418,20 @@ QPushButton:hover{
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;Sitka Small&quot;;
-border: 0.5px solid;</string>
+       <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(170, 170, 170);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
       </property>
       <property name="text">
        <string>Configuracion</string>
@@ -458,24 +472,19 @@ border: 0.5px solid;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-QPushButton{
-	border-radius: 10px;
-	background-color: rgb(255,255,255);
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
+       <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
 }
 
 QPushButton:hover{
-	border-radius: 10px;
+	
 	background-color: rgb(170, 170, 170);
 	
-	font: 75 14pt &quot;Script MT Bold&quot;;
-	color: rgb(0,0, 0);
-	border: 5px solid;
-	border- color: rgb(0, 0, 0);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+
 }</string>
       </property>
       <property name="text">

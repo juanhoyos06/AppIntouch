@@ -78,7 +78,7 @@ class VentanaPrincipal(QMainWindow):
         self.nombreUsuario = nombreUsuario
         self.cedula = cedula
         self.Categorias = self.motel.SeleccionarCategoria(self.cedula)
-        self.ListCategorias = []
+        self.ListCategorias = ['Seleccionar']
 
 
 
@@ -162,7 +162,7 @@ class VentanaPrincipal(QMainWindow):
         capturaCapacidad = self.ventana.lineedit_capacidadBus.text()
         capturaPrecio = self.ventana.lineedit_precioBus.text()
 
-        if capturaCapacidad == "" and capturaPrecio == "":
+        if capturaCapacidad == "" and capturaPrecio == "" and capturaCategoria != "Seleccionar":
             habitacionesDisponibles = self.motel.BuscarhabitacionCategoria(self.cedula, capturaCategoria)
             self.actualizar_tabla_habitaciones(habitacionesDisponibles)
 
@@ -209,7 +209,7 @@ class VentanaConfiguracion(QMainWindow):
         self.ventanaC.comboBox_jacuzzi.addItems(self.servicios)
         self.ventanaC.comboBox_sauna.addItems(self.servicios)
         self.ventanaC.comboBox_turco.addItems(self.servicios)
-        self.ventanaC.comboBox_sillaTantra.addItems(self.servicios)
+
         self.ventanaC.comboBox_categorias.addItems(self.lista_categorias())
         self.ventanaC.comboBox_estado.addItems(self.estados)
 
@@ -223,10 +223,14 @@ class VentanaConfiguracion(QMainWindow):
         capturaNumero = self.ventanaC.lineedit_numHabitacion.text()
         capturaCategoria = self.ventanaC.comboBox_categorias.currentText()
         capturaEstado = self.ventanaC.comboBox_estado.currentText()
+        capturaJacuzzi = self.ventanaC.comboBox_jacuzzi.currentText()
+        capturaSauna = self.ventanaC.comboBox_sauna.currentText()
+        capturaTurco = self.ventanaC.comboBox_turco.currentText()
+        capturaOtros = self.ventanaC.lineedit_otros.text()
 
         if capturaNumero != "" and capturaCategoria != "Seleccionar":
             try:
-                self.motel.Agregarhabitacion(capturaNumero, self.cedula, capturaCategoria, capturaEstado)
+                self.motel.Agregarhabitacion(capturaNumero, self.cedula, capturaCategoria, capturaEstado, capturaJacuzzi, capturaSauna, capturaTurco, capturaOtros)
             except HabitacionExistenteError as e:
                 msg_box = QMessageBox(self)
                 msg_box.setWindowTitle("Error Agregando Habitacion.")
@@ -262,19 +266,14 @@ class VentanaConfiguracion(QMainWindow):
         capturaPrecioBase = self.ventanaC.lineedit_precioBase.text()
         capturaPrecioAdicional = self.ventanaC.lineedit_precioAdicional.text()
         capturaPersonaAdicional = self.ventanaC.lineedit_personaAdicional.text()
-        capturaJacuzzi = self.ventanaC.comboBox_jacuzzi.currentText()
-        capturaSauna = self.ventanaC.comboBox_sauna.currentText()
-        capturaTurco = self.ventanaC.comboBox_turco.currentText()
-        capturaSilla = self.ventanaC.comboBox_sillaTantra.currentText()
-        capturaOtros = self.ventanaC.lineedit_otros.text()
+
 
 
         if (capturaNombreCategoria != "" and capturaCapacidad != "" and capturaTipoEntrada != "" and capturaPrecioBase != ""
                 and capturaPrecioAdicional != "" and capturaPersonaAdicional != ""):
             try:
                 self.motel.AgregarCategoria(self.cedula,capturaNombreCategoria,capturaCapacidad,capturaTipoEntrada,
-                                            capturaPrecioBase, capturaPrecioAdicional, capturaPersonaAdicional,capturaJacuzzi,
-                                            capturaSauna, capturaTurco, capturaSilla, capturaOtros)
+                                            capturaPrecioBase, capturaPrecioAdicional, capturaPersonaAdicional)
             except CategoriaExistenteError as e:
                 msg_box = QMessageBox(self)
                 msg_box.setWindowTitle("Error Agregando Categoria.")
@@ -373,7 +372,7 @@ class VentanaModificar(QMainWindow):
 
         self.ventanaM.pbutton_modificar.clicked.connect(self.ModificarCategorias)
         self.ventanaM.pbutton_refrescar.clicked.connect(self.mostrar_categorias)
-        #self.ventanaM.pbutton_limpiar.clicked.connect(self.LimpiarModificarCatgorias)
+        self.ventanaM.pbutton_limpiar.clicked.connect(self.LimpiarModificarCategorias)
         self.ventanaM.pbutton_volver.clicked.connect(self.volver)
         self.ventanaM.comboBox_categorias.addItems(self.lista_categorias())
         self.ventanaM.comboBox_categoriasMH.addItems(self.listCategorias)
@@ -384,6 +383,7 @@ class VentanaModificar(QMainWindow):
         self.ventanaM.pbutton_refrescar_2.clicked.connect(self.mostrar_habitaciones)
         self.ventanaM.pbutton_modificar_mh.clicked.connect(self.ModificarHabitaciones)
         self.ventanaM.pbutton_volver_mh.clicked.connect(self.volver)
+
 
 
     def lista_categorias(self):
@@ -520,13 +520,22 @@ class VentanaModificar(QMainWindow):
             if CapturaOtros != '':
                 self.motel.ActualizarOtrosHabitacion(self.cedula, capturaNumeroH, CapturaOtros)
 
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Operacion Exitosa")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Habitacion modificada correctamente")
-            msg_box.setStandardButtons(QMessageBox.Ok)
-            msg_box.exec_()
-            self.mostrar_habitaciones()
+            if capturaJacuzzi != 'Seleccionar' or capturaSauna != 'Seleccionar' or CapturaTurco != 'Seleccionar' or CapturaOtros != '':
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Operacion Exitosa")
+                msg_box.setIcon(QMessageBox.Information)
+                msg_box.setText("Habitacion modificada correctamente")
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+                self.mostrar_habitaciones()
+            else:
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Advertencia")
+                msg_box.setIcon(QMessageBox.Information)
+                msg_box.setText("No hay ningun campo a modificar ")
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec_()
+
         else:
             msg_box = QMessageBox(self)
             msg_box.setWindowTitle("Error de validación")

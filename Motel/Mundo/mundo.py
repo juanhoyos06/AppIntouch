@@ -107,8 +107,8 @@ class Motel:
         CursorCrear.commit()
         CursorCrear.close()
 
-    def Agregarhabitacion(self, numero, cedula, categoria, estado):
-        consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{categoria}', '{estado}')"
+    def Agregarhabitacion(self, numero, cedula, categoria, estado, jacuzzi, sauna, turco, otros):
+        consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{categoria}', '{estado}', '{jacuzzi}','{sauna}','{turco}', '{otros}')"
         consultaSelect = f"select Numero, Cedula_Usuario from Habitaciones where Numero = '{numero}' and Cedula_Usuario = '{cedula}'"
 
         if self.c.select_in_database(consultaSelect) == []:
@@ -116,9 +116,9 @@ class Motel:
         else:
             raise HabitacionExistenteError(numero, f"ya existe una habitacion con el numero: {numero}")
 
-    def AgregarCategoria(self, cedula, nombre, capacidad, tipoEntrada, precioBase, precioAdicional, personaAdicional, jacuzzi, sauna, turco, silla, otros):
+    def AgregarCategoria(self, cedula, nombre, capacidad, tipoEntrada, precioBase, precioAdicional, personaAdicional):
         consultaInsert = f"Insert into Categorias values('{nombre}', '{cedula}', '{capacidad}', '{tipoEntrada}'," \
-                         f" '{precioBase}', '{precioAdicional}', '{personaAdicional}', '{jacuzzi}', '{sauna}', '{turco}', '{silla}', '{otros}')"
+                         f" '{precioBase}', '{precioAdicional}', '{personaAdicional}')"
         consultaSelect = f"select Nombre, Cedula_usuario from Categorias where Nombre = '{nombre}' and Cedula_usuario = '{cedula}' "
 
         if self.c.select_in_database(consultaSelect) == []:
