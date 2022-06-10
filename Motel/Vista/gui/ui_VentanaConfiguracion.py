@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'VentanaConfiguracionMTSvYX.ui'
+## Form generated from reading UI file 'VentanaConfiguraciondFPxWH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -148,19 +148,66 @@ class Ui_VentanaConfiguracion(object):
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_2)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.pushButton_volver_DC = QPushButton(self.frame_2)
+        self.pushButton_volver_DC.setObjectName(u"pushButton_volver_DC")
+        self.pushButton_volver_DC.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
+
+        self.horizontalLayout_2.addWidget(self.pushButton_volver_DC)
+
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
 
-        self.pushButton_cancelar = QPushButton(self.frame_2)
-        self.pushButton_cancelar.setObjectName(u"pushButton_cancelar")
-
-        self.horizontalLayout_2.addWidget(self.pushButton_cancelar)
-
         self.pushButton_aceptar = QPushButton(self.frame_2)
         self.pushButton_aceptar.setObjectName(u"pushButton_aceptar")
+        self.pushButton_aceptar.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
 
         self.horizontalLayout_2.addWidget(self.pushButton_aceptar)
+
+        self.pushButton_limpiar_categoria = QPushButton(self.frame_2)
+        self.pushButton_limpiar_categoria.setObjectName(u"pushButton_limpiar_categoria")
+        self.pushButton_limpiar_categoria.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
+
+        self.horizontalLayout_2.addWidget(self.pushButton_limpiar_categoria)
 
 
         self.verticalLayout.addWidget(self.frame_2)
@@ -308,19 +355,66 @@ class Ui_VentanaConfiguracion(object):
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.pushButton_volver_AH = QPushButton(self.frame_5)
+        self.pushButton_volver_AH.setObjectName(u"pushButton_volver_AH")
+        self.pushButton_volver_AH.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
+
+        self.horizontalLayout_3.addWidget(self.pushButton_volver_AH)
+
         self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_8)
 
         self.pushButton_aceptarHab = QPushButton(self.frame_5)
         self.pushButton_aceptarHab.setObjectName(u"pushButton_aceptarHab")
+        self.pushButton_aceptarHab.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
 
         self.horizontalLayout_3.addWidget(self.pushButton_aceptarHab)
 
-        self.pushButton_cancelarHab = QPushButton(self.frame_5)
-        self.pushButton_cancelarHab.setObjectName(u"pushButton_cancelarHab")
+        self.pushButton_limpiarHab = QPushButton(self.frame_5)
+        self.pushButton_limpiarHab.setObjectName(u"pushButton_limpiarHab")
+        self.pushButton_limpiarHab.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	\n"
+"	background-color: rgb(170, 170, 170);\n"
+"	\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}")
 
-        self.horizontalLayout_3.addWidget(self.pushButton_cancelarHab)
+        self.horizontalLayout_3.addWidget(self.pushButton_limpiarHab)
 
 
         self.verticalLayout_2.addWidget(self.frame_5)
@@ -331,10 +425,8 @@ class Ui_VentanaConfiguracion(object):
 
 
         self.retranslateUi(VentanaConfiguracion)
-        self.pushButton_cancelar.clicked.connect(VentanaConfiguracion.close)
-        self.pushButton_cancelarHab.clicked.connect(VentanaConfiguracion.close)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(VentanaConfiguracion)
@@ -348,8 +440,9 @@ class Ui_VentanaConfiguracion(object):
         self.label_tipoEntrada.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Tipo Entrada</span></p></body></html>", None))
         self.label_nombreCategoria.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Nombre Categoria </span></p></body></html>", None))
         self.label_precioBase.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Precio Base</span></p></body></html>", None))
-        self.pushButton_cancelar.setText(QCoreApplication.translate("VentanaConfiguracion", u"Cancelar ", None))
+        self.pushButton_volver_DC.setText(QCoreApplication.translate("VentanaConfiguracion", u"Volver", None))
         self.pushButton_aceptar.setText(QCoreApplication.translate("VentanaConfiguracion", u"Aceptar ", None))
+        self.pushButton_limpiar_categoria.setText(QCoreApplication.translate("VentanaConfiguracion", u"Limpiar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Definir_categorias), QCoreApplication.translate("VentanaConfiguracion", u"Definir categorias, precios y servicios", None))
         self.label_titulo.setText(QCoreApplication.translate("VentanaConfiguracion", u"Agregar Habitacion ", None))
         self.label_turcoAgregarH.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">\u00bfTurco?</span></p></body></html>", None))
@@ -361,8 +454,9 @@ class Ui_VentanaConfiguracion(object):
         self.label_saunaAgregarH.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">\u00bfSauna?</span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("VentanaConfiguracion", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Otros</span></p></body></html>", None))
         self.lineedit_numHabitacion.setPlaceholderText(QCoreApplication.translate("VentanaConfiguracion", u"Obligatorio*", None))
+        self.pushButton_volver_AH.setText(QCoreApplication.translate("VentanaConfiguracion", u"Volver", None))
         self.pushButton_aceptarHab.setText(QCoreApplication.translate("VentanaConfiguracion", u"Aceptar", None))
-        self.pushButton_cancelarHab.setText(QCoreApplication.translate("VentanaConfiguracion", u"Cancelar", None))
+        self.pushButton_limpiarHab.setText(QCoreApplication.translate("VentanaConfiguracion", u"Limpiar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Agregar_habitacion), QCoreApplication.translate("VentanaConfiguracion", u"Agregar habitacion", None))
     # retranslateUi
 

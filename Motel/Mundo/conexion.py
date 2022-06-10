@@ -62,18 +62,16 @@ class Conexion:
         cursorEliminar.commit()
         cursorEliminar.close()
 
-    def BuscarContrasenia(self,consulta):
 
-        return self.select_in_database(consulta)
 
-c = Conexion()
+
+#c = Conexion()
 #
-consulta1 = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas, C.Precio_base FROM Habitaciones as H " \
-            f"INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario AND H.Categoria = C.Nombre where H.Estado = 'Disponible' and H.Cedula_Usuario = '1000410302'"
+#consulta1 = f"SELECT Fecha_reserva FROM Reservas WHERE Cedula_Usuario = '1000410302' AND Numero = '001'"
 #consulta2 = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
 #consulta = f"select Contraseña from Usuarios where Documento_Identidad = 1000410302"
-#Cedula = c.select_in_database(consulta2)
-#print(Cedula)
+#stado = c.select_in_database(consulta1)
+#print(estado)
 #contrasenia=c.BuscarContrasenia(consulta)
 #print(contrasenia[0][0])
 #if Cedula == []:

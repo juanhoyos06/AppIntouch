@@ -60,6 +60,29 @@ class HabitacionNoExistenteError(MotelError):
         self.numero = numero
         self.msg = msg
 
+class HabitacionNoDisponible(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
+        self.msg = msg
+
+class HabitacionNoOcupada(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
+        self.msg = msg
+
+class HabitacionReservada(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
+        self.msg = msg
+
+class ReservaExistente(MotelError):
+    def __init__(self, numero: str, msg: str):
+
+        self.numero = numero
+        self.msg = msg
 
 class Usuario_o_ContraseniaIncorrecto(MotelError):
     """

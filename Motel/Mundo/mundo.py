@@ -1,6 +1,7 @@
 from Motel.Mundo.conexion import Conexion
 from Motel.Mundo.errores import UsuarioExistenteError, UsuarioNoExistenteError, ContraseniaIncorrecta, \
-    Usuario_o_ContraseniaIncorrecto, HabitacionExistenteError, CategoriaExistenteError
+    Usuario_o_ContraseniaIncorrecto, HabitacionExistenteError, CategoriaExistenteError, HabitacionNoDisponible, \
+    HabitacionNoOcupada, HabitacionReservada, ReservaExistente
 
 
 class Habitacion:
@@ -35,12 +36,10 @@ class Usuario:
 
 class Reserva:
 
-    def __init__(self, TipoHabitacion, CantidadPersonas, TipoEntrada, FechaReserva, HoraReserva):
-        self.TipoHabitacion: str = TipoHabitacion
-        self.CantidadPersonas: int = CantidadPersonas
-        self.TipoEntrada: str = TipoEntrada
-        self.FechaReserva = FechaReserva
-        self.HorReserva = HoraReserva
+    def __init__(self, Numero_habitacion, Fecha_reserva):
+        self.Numero_habitacion: str = Numero_habitacion
+        self.Fecha_reserva = Fecha_reserva
+
     pass
 
 class Motel:
@@ -94,18 +93,6 @@ class Motel:
         else:
             raise Usuario_o_ContraseniaIncorrecto(CedulaUsuario, f"Usuario o contraseña incorrecto, porfavor intente nuevamente")
 
-    def CrearDatabaseHabitaciones(self, cedula):
-        """
-        Crea la tabla de las habitaciones al usuario
-        :arg : cedula del usuario que va a crear las habitaciones
-
-        """
-        CursorCrear = Conexion.conexion.cursor()
-        consulta = f"create table Habitaciones{cedula}(Numero INT PRIMARY KEY, Tipo VARCHAR(15) NOT NULL, Capacidad INT NOT NULL, TipoEntrada VARCHAR(15) NOT NULL, Estado VARCHAR(15) NOT NULL)"
-        CursorCrear.execute(consulta)
-
-        CursorCrear.commit()
-        CursorCrear.close()
 
     def Agregarhabitacion(self, numero, cedula, categoria, estado, jacuzzi, sauna, turco, otros):
         consultaInsert = f"Insert into Habitaciones values('{numero}','{cedula}','{categoria}', '{estado}', '{jacuzzi}','{sauna}','{turco}', '{otros}')"
@@ -130,22 +117,6 @@ class Motel:
         consulta = f"Select Nombre from Categorias where Cedula_usuario = '{cedula}' "
         return self.c.select_in_database(consulta)
 
-    def selectTipo(self, cedula, numeroHabitacion):
-        consulta= f"select Tipo from Habitaciones{cedula} where Numero = {numeroHabitacion}"
-        Tipo = self.c.select_in_database(consulta)
-        return Tipo[0][0]
-
-    def selectCapacidad(self, cedula, numeroHabitacion):
-        consulta = f"select Capacidad from Habitaciones{cedula} where Numero = {numeroHabitacion}"
-        self.c.select_in_database(consulta)
-
-    def selectTipoEntrada(self, cedula, numeroHabitacion):
-        consulta = f"select TipoEntrada from Habitaciones{cedula} where Numero = {numeroHabitacion}"
-        self.c.select_in_database(consulta)
-
-    def selectEstado(self, cedula, numeroHabitacion):
-        consulta = f"select Estado from Habitaciones{cedula} where Numero = {numeroHabitacion}"
-        self.c.select_in_database(consulta)
 
 
 #>>>>>>>>>>>>>>>>>>>>>>>>Metodos Categorias<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -195,7 +166,6 @@ class Motel:
         consulta = f"update Habitaciones set Categoria = '{categoria}' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
         self.c.update_in_database(consulta)
 
-
     def ActualizarJacuzziHabitacion(self, cedula, numero, jacuzzi):
         consulta = f"UPDATE Habitaciones SET Jacuzzi = '{jacuzzi}' WHERE Numero = '{numero}' AND Cedula_Usuario = '{cedula}'"
         self.c.update_in_database(consulta)
@@ -213,13 +183,41 @@ class Motel:
         self.c.update_in_database(consulta)
 
     def entradaHabitacion(self, cedula, numero):
-        consulta = f"update Habitaciones set Estado = 'Ocupada' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
-        self.c.update_in_database(consulta)
+        consultaUpdate = f"update Habitaciones set Estado = 'Ocupada' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
+        consultaSelect = f"Select Estado from Habitaciones where Cedula_Usuario = '{cedula}' and Numero = {numero} "
+        estado = self.c.select_in_database(consultaSelect)
+
+        if estado[0][0] != "Disponible":
+            raise HabitacionNoDisponible(numero, f"La habitacion {numero} no esta disponible, revise nuevamente la lista")
+        else:
+            self.c.update_in_database(consultaUpdate)
+
+    def salidaHabitacion(self, cedula, numero):
+        consultaUpdate = f"update Habitaciones set Estado = 'Disponible' where Cedula_Usuario = '{cedula}' and Numero = {numero}"
+        consultaSelect = f"Select Estado from Habitaciones where Cedula_Usuario = '{cedula}' and Numero = {numero} "
+        estado = self.c.select_in_database(consultaSelect)
+
+        if estado[0][0] != "Ocupada":
+            raise HabitacionNoOcupada(numero, f"La habitacion {numero} no esta ocupada, revise nuevamente la lista")
+        else:
+            self.c.update_in_database(consultaUpdate)
 
     def BuscarhabitacionDisponible(self, cedula):
         consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
                    f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
                    f" AND H.Categoria = C.Nombre where H.Estado = 'Disponible' AND H.Cedula_Usuario = '{cedula}';"
+        return self.c.select_in_database(consulta)
+
+    def BuscarhabitacionOcupada(self, cedula):
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Estado = 'Ocupada' AND H.Cedula_Usuario = '{cedula}';"
+        return self.c.select_in_database(consulta)
+
+    def BuscarHabitacionesParaReserva(self, cedula):
+        consulta = f"SELECT H.Numero as Numero_Habitacion, C.Nombre as Categoria, C.Capacidad as Capacidad_Personas," \
+                   f" C.Precio_base FROM Habitaciones as H INNER JOIN Categorias as C ON H.Cedula_Usuario = C.Cedula_usuario" \
+                   f" AND H.Categoria = C.Nombre where H.Cedula_Usuario = '{cedula}';"
         return self.c.select_in_database(consulta)
 
     def BuscarhabitacionCategoria(self, cedula, categoria):
@@ -247,3 +245,40 @@ class Motel:
     def SeleccionarNumHabitacion(self, cedula):
         consulta = f"Select Numero from Habitaciones where Cedula_Usuario = '{cedula}' "
         return self.c.select_in_database(consulta)
+
+    def Reservar(self, numero_reserva, cedula, numero_habitacion, fecha_reserva):
+        consultaSelect = f"Select * from Reservas Where Numero ='{numero_reserva}'"
+        numeroReserva = self.c.select_in_database(consultaSelect)
+        if numeroReserva == []:
+            consultaInsert = f"INSERT INTO Reservas VALUES('{numero_reserva}', '{numero_habitacion}','{cedula}', '{fecha_reserva}')"
+            consultaUpdate = f"UPDATE Habitaciones SET Estado = 'Reservada' WHERE Cedula_Usuario = '{cedula}' AND Numero = '{numero_habitacion}'"
+        else:
+            raise ReservaExistente(numero_reserva, f"Ya existe una reserva con el numero {numero_reserva}")
+
+
+        self.c.insert_in_database(consultaInsert)
+        self.c.update_in_database(consultaUpdate)
+
+    def SeleccionarNumReserva(self, cedula):
+        consulta = f"select Numero from Reservas where Cedula_Usuario = '{cedula}'"
+        return self.c.select_in_database(consulta )
+
+    def MostrarReservas(self, cedula):
+        consultaSelect = f"Select R.Numero as Numero_reserva, R.Numero_habitacion, R.Fecha_reserva from Reservas as R " \
+                         f"inner join Habitaciones as H on H.Numero = R.Numero_habitacion where H.Estado = 'Reservada'  and H.Cedula_Usuario = '{cedula}'"
+
+
+        return self.c.select_in_database(consultaSelect)
+
+    def BuscarReservas(self, cedula, numero_reserva):
+        consulta = f"Select * from Reservas where Numero = '{numero_reserva}' and Cedula_Usuario = '{cedula}'"
+
+        return self.c.select_in_database(consulta)
+
+    def RegistrarEntradaReserva(self, cedula, numeroReserva):
+        consultaSelectNumHabitacion = f"Select Numero_habitacion from Reservas where Numero = '{numeroReserva}' and Cedula_Usuario = '{cedula}'"
+        numeroHabitacion = self.c.select_in_database(consultaSelectNumHabitacion)
+
+        consultaUpdate = f"update Habitaciones set Estado = 'Ocupada' where Cedula_Usuario = '{cedula}' and Numero = '{numeroHabitacion[0][0]}'"
+
+        self.c.update_in_database(consultaUpdate)
